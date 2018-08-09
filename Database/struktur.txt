@@ -1,0 +1,25 @@
+sosmed
+- id
+- pass
+- name sosmed
+
+login admin
+- id
+- pass
+
+produk
+- idProduk
+- name
+- description
+- size
+- color
+- harga
+- jumlah
+
+userLogin
+- idToken
+
+keranjang
+- idToken
+- idProduk
+- jumlah
