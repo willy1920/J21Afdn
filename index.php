@@ -27,15 +27,12 @@
 	<input type="text" name="search" placeholder="Cari produk" class="search">
 	<a href=""><button href="">Home</button></a>
 	<div class="w3-dropdown-hover">
-<<<<<<< HEAD
       <button>Kategori</button>
       <div class="w3-dropdown-content w3-card-4" style="width: 200px; transition: 0.5s;">
         <a href="#">Atasan Laki-laki</a>
         <a href="#">Atasan Perempuan</a>
         <a href="#">Bawahan Laki-laki</a>
         <a href="#">Bawahan Perempuan</a>
-=======
-      <a href="#">Kategori</a>
       <div class="w3-dropdown-content" style="width: 200px;">
 	  	<?php
 			$sql = "SELECT * FROM category";
@@ -51,7 +48,6 @@
         <a href="#" style="width: 100%">Atasan Perempuan</a>
         <a href="#" style="width: 100%">Bawahan Laki-laki</a>
         <a href="#" style="width: 100%">Bawahan Perempuan</a>
->>>>>>> be9a7d26a4bd968e6e8f716e907f1fd117b63e24
       </div>
     </div>
 
