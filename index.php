@@ -1,5 +1,15 @@
+<?php
+	include "config/config.php";
+	session_start();
+
+	if (isset($_SESSION['status']) && isset($_SESSION['idToken'])) {
+		# code...
+	}
+	$db = new Database;
+	$mysqli = mysqli_connect($db->host, $db->user, $db->pass, $db->name); 
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Toko Baju 1</title>
 	<meta name="google-signin-scope" content="profile email"> 
@@ -7,6 +17,8 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="stylesheet" type="text/css" href="style/w3.css">
     <link rel="stylesheet" type="text/css" href="style/css.css">
+	<script src="js/ajax.js"></script>
+	<script src="js/login.js"></script>
 </head>
 <body>
 
@@ -15,12 +27,31 @@
 	<input type="text" name="search" placeholder="Cari produk" class="search">
 	<a href=""><button href="">Home</button></a>
 	<div class="w3-dropdown-hover">
+<<<<<<< HEAD
       <button>Kategori</button>
       <div class="w3-dropdown-content w3-card-4" style="width: 200px; transition: 0.5s;">
         <a href="#">Atasan Laki-laki</a>
         <a href="#">Atasan Perempuan</a>
         <a href="#">Bawahan Laki-laki</a>
         <a href="#">Bawahan Perempuan</a>
+=======
+      <a href="#">Kategori</a>
+      <div class="w3-dropdown-content" style="width: 200px;">
+	  	<?php
+			$sql = "SELECT * FROM category";
+			$query = $mysqli->query($sql);
+			while ($row = $query->fetch_assoc()) {
+				?>
+				<a href="#" style="width: 100%"><?php echo ucfirst($row['name']); ?></a>
+				<?php
+			}
+			$mysqli->close();
+		?>
+        <a href="#" style="width: 100%">Atasan Laki-laki</a>
+        <a href="#" style="width: 100%">Atasan Perempuan</a>
+        <a href="#" style="width: 100%">Bawahan Laki-laki</a>
+        <a href="#" style="width: 100%">Bawahan Perempuan</a>
+>>>>>>> be9a7d26a4bd968e6e8f716e907f1fd117b63e24
       </div>
     </div>
 
@@ -34,7 +65,7 @@
         console.log('Given Name: ' + profile.getGivenName()); 
         console.log('Family Name: ' + profile.getFamilyName()); 
         console.log("Image URL: " + profile.getImageUrl()); 
-        console.log("Email: " + profile.getEmail()); 
+        console.log("Email: " + profile.getEmail());
 
         // The ID token you need to pass to your backend: 
         var id_token = googleUser.getAuthResponse().id_token; 
@@ -45,6 +76,9 @@
 </div>
 
 <div class="isi">
+<?php
+	$sql = "SELECT "
+?>
 	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 65px 50px 0;">
 		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
 		<div style="padding: 10px;">

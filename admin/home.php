@@ -1,3 +1,6 @@
+<?php
+    //include "../security/session.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
