@@ -1,4 +1,5 @@
 <?php
+    //include "../config/session.php";
     include "../config/config.php";
 ?>
 <!DOCTYPE html>
@@ -41,6 +42,7 @@
                     </tr>
                     <?php
                 }
+                $mysqli->close();
             ?>
         </table>
     </div>

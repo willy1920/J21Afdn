@@ -1,4 +1,5 @@
 <?php
+    //include "../config/session.php";
     if (!isset($_GET['id'])) {
         header("Location: category.php");
     }

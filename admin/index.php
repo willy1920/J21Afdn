@@ -1,5 +1,5 @@
 <?php
-    //include "../security/session.php";
+    //include "../config/session.php";
     include "../config/config.php";
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 <div class="header w3-card-4">
 	<p class="toko"><i>Nama Toko</i></p>
 	<a href="product.php"><button>Produk</button></a>
-  <a href="category.php"><button>Kategori</button></a>
-  <a href="profit.php"><button>Pendapatan</button></a>
+    <a href="category.php"><button>Kategori</button></a>
+    <a href="profit.php"><button>Pendapatan</button></a>
 	<button style="float: right;">Logout</button> 
 </div>

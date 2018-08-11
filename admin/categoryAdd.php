@@ -1,4 +1,5 @@
 <?php
+    //include "../config/session.php";
     include "../config/config.php";
     if (isset($_POST['submit'])) {
         $sql = "INSERT INTO category (name) VALUES(?)";
@@ -19,5 +20,7 @@
     else{
         header("Location: categoryAddDashboard.php");
     }
+    $stmt->close();
+    $mysqli->close();
     
 ?>

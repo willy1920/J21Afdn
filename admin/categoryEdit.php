@@ -1,4 +1,5 @@
 <?php
+    //include "../config/session.php";
     include "../config/config.php";
     if (isset($_POST['submit'])) {
         $sql = "UPDATE category SET name=? WHERE idCategory=?";
@@ -16,4 +17,6 @@
     else{
         header("Location: category.php");
     }
+    $stmt->close();
+    $mysqli->close();
 ?>
