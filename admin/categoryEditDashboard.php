@@ -14,7 +14,7 @@
 <body>
     <form action="categoryEdit.php" method="post">
         <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-        Nama : <input type="text" name="name">
+        Nama : <input type="text" name="name" value="<?php echo $_GET['name']; ?>">
         <input type="submit" name="submit" value="Submit">
     </form>
 </body>

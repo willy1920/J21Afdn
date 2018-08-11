@@ -5,8 +5,6 @@
 	if (isset($_SESSION['status']) && isset($_SESSION['idToken'])) {
 		# code...
 	}
-	$db = new Database;
-	$mysqli = mysqli_connect($db->host, $db->user, $db->pass, $db->name); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
