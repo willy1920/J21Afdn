@@ -37,7 +37,6 @@
 				<a href="#" style="width: 100%"><?php echo ucfirst($row['name']); ?></a>
 				<?php
 			}
-			$mysqli->close();
 		?>
         <a href="#" style="width: 100%">Atasan Laki-laki</a>
         <a href="#" style="width: 100%">Atasan Perempuan</a>
@@ -115,3 +114,6 @@
 </div>
 </body>
 </html>
+<?php
+	$mysqli->close();
+?>

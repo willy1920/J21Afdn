@@ -1,0 +1,23 @@
+<?php
+    include "../config/config.php";
+    if (isset($_POST['submit'])) {
+        $sql = "INSERT INTO category (name) VALUES(?)";
+        $stmt = $mysqli->prepare($sql);
+        if ($stmt) {
+            $stmt->bind_param("s", $_POST['name']);
+            if($stmt->execute()){
+                header("Location: category.php");
+            }
+            else{
+                echo "execute failed";
+            }
+        }
+        else{
+            echo "prepare failed";
+        }
+    }
+    else{
+        header("Location: categoryAddDashboard.php");
+    }
+    
+?>
