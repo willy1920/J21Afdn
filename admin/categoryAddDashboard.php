@@ -9,7 +9,7 @@
 <body>
     <form action="categoryAdd.php" method="post">
         Nama : <input type="text" name="name" require>
-        <input type="submit" value="Sabmit" name="submit">
+        <input type="submit" value="Submit" name="submit">
     </form>
 </body>
 </html>
