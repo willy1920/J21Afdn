@@ -21,14 +21,35 @@
     </style>
 </head>
 <body>
-    <a href="categoryAddDashboard.php"><img src="../icon/add.png" alt="Tambah"></a>
-    <div class="isi">
-        <button class="w3-btn w3-red" style="margin-bottom: 20px;">Tambah Kategori</button>
+    <div class="header w3-card-4">
+        <p class="toko"><i>Nama Toko</i></p>
+        <a href="index.php"><button>Home</button></a>
+        <a href="product.php"><button>Produk</button></a>
+        <a href="category.php"><button>Kategori</button></a>
+        <button style="float: right;">Logout</button> 
+    </div>
+
+    <div class="w3-modal" style="display: none;" id="categoryAdd">
+        <form action="categoryAdd.php" method="post" style="margin: 100px 500px; background-color: white; padding: 30px;">
+            <center><input type="text" name="name" required class="search" placeholder="Masukkan Kategori" style="margin-right: 0px;" autofocus><br>
+            <input type="submit" value="Submit" name="submit" onclick="document.getElementById('categoryAdd').style.display='none'" class="w3-btn w3-red" style="margin-top: 20px;"></center>
+        </form>
+    </div>
+
+    <div class="w3-modal" style="display: none;" id="categoryEdit">
+        <form action="categoryEdit.php" method="post" style="margin: 100px 500px; background-color: white; padding: 30px;">
+            <center><input type="text" name="name" required class="search" placeholder="Ubah Kategori" style="margin-right: 0px;" autofocus><br>
+            <input type="submit" value="Submit" name="submit" onclick="document.getElementById('categoryEdit').style.display='none'" class="w3-btn w3-red" style="margin-top: 20px;"></center>
+            <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+        </form>
+    </div>
+
+    <div class="isi" style="margin: 0 200px;">
+        <button class="w3-btn w3-red" style="margin-bottom: 20px;" onclick="document.getElementById('categoryAdd').style.display='block'">Tambah Kategori</button>
         <table class="w3-table w3-hoverable w3-striped">
             <tr class="w3-red">
                 <th>Kategori</th>
-                <th>Ubah</th>
-                <th>Hapus</th>
+                <th colspan="2"><center>Option</center></th>
             </tr>
             <?php
                 $sql = "SELECT * FROM category";
@@ -37,8 +58,8 @@
                     ?>
                     <tr>
                         <td><?php echo $row['name']; ?></td>
-                        <td><a href="categoryEditDashboard.php?id=<?php echo $row['idCategory']."&name=".$row['name']; ?>">Edit</a></td>
-                        <td><a onclick="categoryDelete(<?php echo $row['idCategory']; ?>,'<?php echo $row['name']; ?>')">Hapus</a></td>
+                        <td><center><a class="option" onclick="document.getElementById('categoryEdit').style.display='block'">Edit</a></center></td>
+                        <td><center><a onclick="categoryDelete(<?php echo $row['idCategory']; ?>,'<?php echo $row['name']; ?>')" class="option">Hapus</a></center></td>
                     </tr>
                     <?php
                 }
