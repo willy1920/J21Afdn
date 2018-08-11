@@ -1,15 +1,3 @@
 <?php
-    class Database{
-        public $host;
-        public $user;
-        public $pass;
-        public $name;
-
-        function __construct(){
-            $this->host = "localhost";
-            $this->user = "root";
-            $this->pass = "";
-            $this->name = "tokobaju1";
-          }
-    }
+    $mysqli = mysqli_connect("localhost", "root", "", "tokobaju1");
 ?>
