@@ -34,13 +34,15 @@
                 $sql = "SELECT * FROM category";
                 $query = $mysqli->query($sql);
                 while($row = $query->fetch_assoc()){
+                    if($row['idCategory'] != 1){
                     ?>
-                    <tr>
-                        <td><?php echo $row['name']; ?></td>
-                        <td><a href="categoryEditDashboard.php?id=<?php echo $row['idCategory']."&name=".$row['name']; ?>">Edit</a></td>
-                        <td><a onclick="categoryDelete(<?php echo $row['idCategory']; ?>,'<?php echo $row['name']; ?>')">Hapus</a></td>
-                    </tr>
+                        <tr>
+                            <td><?php echo $row['name']; ?></td>
+                            <td><a href="categoryEditDashboard.php?id=<?php echo $row['idCategory']."&name=".$row['name']; ?>">Edit</a></td>
+                            <td><a onclick="categoryDelete(<?php echo $row['idCategory']; ?>,'<?php echo $row['name']; ?>')">Hapus</a></td>
+                        </tr>
                     <?php
+                    }
                 }
                 $mysqli->close();
             ?>
