@@ -34,7 +34,7 @@
 
 <div class="w3-modal" style="display: none;" id="accountEdit">
     <form action="accountEdit.php" method="post" style="margin: 50px 500px; background-color: white; padding: 30px;">
-        <button class="cancel w3-btn w3-red" onclick="document.getElementById('categoryAdd').style.display='none'">X</button>
+        <button class="cancel w3-btn w3-red" onclick="document.getElementById('accountEdit').style.display='none'">X</button>
         <center><input type="hidden" name="name" required class="search" placeholder="Masukkan Username" style="margin: 0 0 20px;" autofocus><br>
         <input type="password" name="password" required class="search" placeholder="Masukkan Password" style="margin: 0 0 20px;" oninput(checkPass)><br>
         <input type="password" name="confirmPassword" required class="search" placeholder="Konfirmasi Password" style="margin: 0 0 0px;" oninput(checkPass)><br>
