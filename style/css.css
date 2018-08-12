@@ -36,3 +36,7 @@
 .isi{
 	padding: 30px 50px;
 }
+.option{
+	text-decoration: none;
+	cursor: pointer;
+}
