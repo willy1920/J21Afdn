@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 12, 2018 at 05:34 AM
+-- Generation Time: Aug 12, 2018 at 06:39 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.2.2
 
@@ -238,11 +238,21 @@ CREATE TABLE `shippingcompany` (
 --
 
 CREATE TABLE `sosmed` (
-  `idSosmed` char(50) NOT NULL,
-  `pass` char(40) NOT NULL,
+  `idSosmed` tinyint(2) UNSIGNED NOT NULL,
+  `userSosmed` char(50) NOT NULL,
+  `pass` char(50) NOT NULL,
   `type` char(20) NOT NULL,
-  `keySosmed` char(10) NOT NULL
+  `keySosmed` char(10) NOT NULL,
+  `ivSosmed` char(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sosmed`
+--
+
+INSERT INTO `sosmed` (`idSosmed`, `userSosmed`, `pass`, `type`, `keySosmed`, `ivSosmed`) VALUES
+(1, '', 'KVSU8VnP0wD7', 'Instagram', '#™&*^%˜yþÌ', 'DKbÔ¤–é%j'),
+(2, 'willychai04@gmail.com', 'bVqIYLFIxxt4', 'Instagram', '5MœžŽÑ§ˆ@', '£®ªôY°…ÄÈ–');
 
 -- --------------------------------------------------------
 
@@ -402,6 +412,12 @@ ALTER TABLE `product`
 --
 ALTER TABLE `sale`
   MODIFY `idSale` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sosmed`
+--
+ALTER TABLE `sosmed`
+  MODIFY `idSosmed` tinyint(2) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
