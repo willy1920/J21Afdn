@@ -18,6 +18,7 @@
     <a href="index.php"><button>Home</button></a>
 	<a href="product.php"><button>Produk</button></a>
     <a href="category.php"><button>Kategori</button></a>
+    <a href="sosmed.php"><button>Sosial Media</button></a>
 	<button style="float: right;">Logout</button> 
 </div>
 
