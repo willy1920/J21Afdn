@@ -21,24 +21,27 @@
     <div class="w3-modal" style="display: none;" id="saleAdd">
         <form action="saleAdd.php" method="post" style="margin: 30px 450px; background-color: white; padding: 30px;">
             <button class="cancel w3-btn w3-red" onclick="document.getElementById('saleAdd').style.display='none'">X</button>
-            <center>Pilih kategori produk : <select name="category" style="margin-bottom: 20px">
+            <center>Pilih produk : <select name="addIdProduct" style="margin-bottom: 20px">
             <?php
-                $sql = "SELECT * FROM category";
+                $sql = "SELECT product.idProduct, dataproduct.name 
+                        FROM product
+                        INNER JOIN dataproduct
+                        ON product.idProduct = dataproduct.idProduct";
                 $query = $mysqli->query($sql);
                 while($row = $query->fetch_assoc()){
                     if($row['idCategory'] != 1){
-            ?>
-                        <option value="<?php echo $row['idCategory']; ?>"><?php echo $row['name']; ?></option>
-            <?php
+                    ?>
+                    <option value="<?php echo $row['idProduct']; ?>"><?php echo $row['name']; ?></option>
+                    <?php
                     }
                 }
             ?>
             </select><br>
-            <input type="number" name="diskon" required class="search" placeholder="Jumlah Diskon" style="margin: 0 0 20px;"><br>
+            <input type="number" name="addDiscount" required class="search" placeholder="Jumlah Diskon" style="margin: 0 0 20px;"><br>
             Jam dimulai : <input type="time" name="startSale" required style="margin: 0 0 20px;"><br>
             Jam berakhir : <input type="time" name="finishSale" required style="margin: 0 0 20px;"><br>
-            <input type="number" name="batasStock" required class="search" placeholder="Batas Stock" style="margin: 0 0 20px;"><br>
-            <input type="submit" value="Submit" name="submit" onclick="document.getElementById('categoryAdd').style.display='none'" class="w3-btn w3-red"></center>
+            <input type="number" name="limitStock" required class="search" placeholder="Batas Stock" style="margin: 0 0 20px;"><br>
+            <input type="submit" value="Submit" name="addSubmit" onclick="document.getElementById('categoryAdd').style.display='none'" class="w3-btn w3-red"></center>
         </form>
     </div>
 
