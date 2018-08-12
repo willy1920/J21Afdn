@@ -21,17 +21,13 @@
     </style>
 </head>
 <body>
-    <div class="header w3-card-4">
-        <p class="toko"><i>Nama Toko</i></p>
-        <a href="index.php"><button>Home</button></a>
-        <a href="product.php"><button>Produk</button></a>
-        <a href="category.php"><button>Kategori</button></a>
-        <a href="account.php"><button>Akun</button></a>
-        <button style="float: right;">Logout</button> 
-    </div>
+<?php
+    include 'menu.php';
+?>
 
     <div class="w3-modal" style="display: none;" id="categoryAdd">
         <form action="categoryAdd.php" method="post" style="margin: 100px 500px; background-color: white; padding: 30px;">
+            <button class="cancel w3-btn w3-red" onclick="document.getElementById('categoryAdd').style.display='none'">X</button>
             <center><input type="text" name="name" required class="search" placeholder="Masukkan Kategori" style="margin-right: 0px;" autofocus><br>
             <input type="submit" value="Submit" name="submit" onclick="document.getElementById('categoryAdd').style.display='none'" class="w3-btn w3-red" style="margin-top: 20px;"></center>
         </form>
@@ -39,6 +35,7 @@
 
     <div class="w3-modal" style="display: none;" id="categoryEdit">
         <form action="categoryEdit.php" method="post" style="margin: 100px 500px; background-color: white; padding: 30px;">
+            <button class="cancel w3-btn w3-red" onclick="document.getElementById('categoryAdd').style.display='none'">X</button>
             <center><input type="text" name="editName" id="editName" required class="search" placeholder="Ubah Kategori" style="margin-right: 0px;" autofocus><br>
             <input type="submit" value="Submit" name="editSubmit" onclick="document.getElementById('categoryEdit').style.display='none'" class="w3-btn w3-red" style="margin-top: 20px;"></center>
             <input type="hidden" name="editId" id="editId">

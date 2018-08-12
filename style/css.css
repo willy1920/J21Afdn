@@ -40,3 +40,8 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+.cancel{
+	font-size: 20px;
+	float: right;
+	margin: -30px;
+}

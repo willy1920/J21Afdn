@@ -17,17 +17,13 @@
     <link rel="stylesheet" type="text/css" href="../style/css.css">
 </head>
 <body>
-<div class="header w3-card-4">
-	<p class="toko"><i>Nama Toko</i></p>
-    <a href="index.php"><button>Home</button></a>
-	<a href="product.php"><button>Produk</button></a>
-    <a href="category.php"><button>Kategori</button></a>
-    <a href="account.php"><button>Akun</button></a>
-	<button style="float: right;">Logout</button> 
-</div>
+<?php
+    include 'menu.php';
+?>
 
 <div class="w3-modal" style="display: none;" id="accountAdd">
     <form action="accountAdd.php" method="post" style="margin: 50px 500px; background-color: white; padding: 30px;">
+        <button class="cancel w3-btn w3-red" onclick="document.getElementById('accountAdd').style.display='none'">X</button>
         <center><input type="text" name="name" required class="search" placeholder="Masukkan Username" style="margin: 0 0 20px;" autofocus><br>
         <input type="password" name="password" required class="search" placeholder="Masukkan Password" style="margin: 0 0 20px;" oninput(checkPass)><br>
         <input type="password" name="confirmPassword" required class="search" placeholder="Konfirmasi Password" style="margin: 0 0 20px;" oninput(checkPass)><br>
@@ -38,6 +34,7 @@
 
 <div class="w3-modal" style="display: none;" id="accountEdit">
     <form action="accountEdit.php" method="post" style="margin: 50px 500px; background-color: white; padding: 30px;">
+        <button class="cancel w3-btn w3-red" onclick="document.getElementById('categoryAdd').style.display='none'">X</button>
         <center><input type="hidden" name="name" required class="search" placeholder="Masukkan Username" style="margin: 0 0 20px;" autofocus><br>
         <input type="password" name="password" required class="search" placeholder="Masukkan Password" style="margin: 0 0 20px;" oninput(checkPass)><br>
         <input type="password" name="confirmPassword" required class="search" placeholder="Konfirmasi Password" style="margin: 0 0 0px;" oninput(checkPass)><br>
