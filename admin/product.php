@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="../style/w3.css">
     <link rel="stylesheet" type="text/css" href="../style/css.css">
-    <title>Document</title>
+    <title>Admin - Produk</title>
     <script src="../js/ajax.js"></script>
     <script src="../js/product.js"></script>
     <link rel="stylesheet" type="text/css" href="../style/w3.css">
@@ -22,6 +22,7 @@
     <a href="index.php"><button>Home</button></a>
 	<a href="product.php"><button>Produk</button></a>
     <a href="category.php"><button>Kategori</button></a>
+    <a href="account.php"><button>Akun</button></a>
 	<button style="float: right;">Logout</button> 
 </div>
 
