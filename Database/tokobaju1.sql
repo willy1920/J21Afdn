@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 10, 2018 at 09:10 AM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Host: localhost:3306
+-- Generation Time: Aug 12, 2018 at 05:34 AM
+-- Server version: 5.7.19
+-- PHP Version: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -51,7 +51,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`idCategory`, `name`) VALUES
-(1, 'dalaman');
+(1, 'unkown'),
+(2, 'Bawahan laki-laki'),
+(4, 'Kemeja Perempuan');
 
 -- --------------------------------------------------------
 
@@ -88,11 +90,55 @@ CREATE TABLE `contact` (
 CREATE TABLE `dataproduct` (
   `idProduct` smallint(5) UNSIGNED NOT NULL,
   `name` char(30) NOT NULL,
-  `picture` char(8) NOT NULL,
   `description` tinytext NOT NULL,
-  `size` tinyint(2) UNSIGNED NOT NULL,
+  `size` char(10) NOT NULL,
   `color` char(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dataproduct`
+--
+
+INSERT INTO `dataproduct` (`idProduct`, `name`, `description`, `size`, `color`) VALUES
+(9, 'a', 'aaa', '12-13', '#9851ee'),
+(10, 'a', 'aaa', '12-13', '#9851ee'),
+(11, 'a', 'aaa', '12-13', '#9851ee'),
+(12, 'a', 'aaa', '12-13', '#9851ee'),
+(13, 'a', 'aaa', '12-13', '#9851ee'),
+(14, 'a', 'aaa', '12-13', '#9851ee'),
+(16, 'Bawahan', 'Murah meriah', '24-30', '#000000'),
+(17, 'Bawahan', 'Murah meriah', '24-30', '#000000'),
+(18, 'Kemeja Putih', 'Kemaja bahan dingin', '24-32', '#575bf0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `picture`
+--
+
+CREATE TABLE `picture` (
+  `idPicture` smallint(5) UNSIGNED NOT NULL,
+  `idProduct` smallint(5) UNSIGNED NOT NULL,
+  `picture` char(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `picture`
+--
+
+INSERT INTO `picture` (`idPicture`, `idProduct`, `picture`) VALUES
+(1, 13, 'e97e8b7f20955d48304d6ff63242db75jpg'),
+(2, 13, '911af7aa209e00b49f3d6fd2afa92564png'),
+(3, 14, 'e97e8b7f20955d48304d6ff63242db75.jpg'),
+(4, 14, '911af7aa209e00b49f3d6fd2afa92564.png'),
+(5, 15, 'e97e8b7f20955d48304d6ff63242db75.jpg'),
+(6, 15, '911af7aa209e00b49f3d6fd2afa92564.png'),
+(7, 16, 'e97e8b7f20955d48304d6ff63242db75.jpg'),
+(8, 16, '911af7aa209e00b49f3d6fd2afa92564.png'),
+(9, 17, 'e97e8b7f20955d48304d6ff63242db75.jpg'),
+(10, 17, '911af7aa209e00b49f3d6fd2afa92564.png'),
+(11, 18, '18e97e8b7f20955d48304d6ff63242db75.jpg'),
+(12, 18, '18911af7aa209e00b49f3d6fd2afa92564.png');
 
 -- --------------------------------------------------------
 
@@ -107,6 +153,30 @@ CREATE TABLE `product` (
   `sellingPrice` mediumint(8) UNSIGNED NOT NULL,
   `stock` smallint(5) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`idProduct`, `idCategory`, `capital`, `sellingPrice`, `stock`) VALUES
+(1, 2, 1, 2, 3),
+(2, 2, 1, 2, 3),
+(3, 2, 1, 2, 3),
+(4, 2, 1, 2, 3),
+(5, 2, 1, 2, 3),
+(6, 2, 1, 2, 3),
+(7, 2, 1, 2, 3),
+(8, 2, 1, 2, 3),
+(9, 2, 1, 2, 3),
+(10, 2, 15000, 20000, 15),
+(11, 2, 15000, 20000, 15),
+(12, 2, 15000, 20000, 15),
+(13, 2, 15000, 20000, 15),
+(14, 2, 15000, 20000, 15),
+(15, 2, 15000, 150000, 10),
+(16, 2, 15000, 150000, 10),
+(17, 2, 15000, 150000, 10),
+(18, 2, 150000, 350000, 10);
 
 -- --------------------------------------------------------
 
@@ -168,9 +238,10 @@ CREATE TABLE `shippingcompany` (
 --
 
 CREATE TABLE `sosmed` (
-  `id_sosmed` char(50) NOT NULL,
+  `idSosmed` char(50) NOT NULL,
   `pass` char(40) NOT NULL,
-  `name` char(20) NOT NULL
+  `type` char(20) NOT NULL,
+  `keySosmed` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -239,6 +310,12 @@ ALTER TABLE `dataproduct`
   ADD PRIMARY KEY (`idProduct`);
 
 --
+-- Indexes for table `picture`
+--
+ALTER TABLE `picture`
+  ADD PRIMARY KEY (`idPicture`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -274,7 +351,7 @@ ALTER TABLE `shippingcompany`
 -- Indexes for table `sosmed`
 --
 ALTER TABLE `sosmed`
-  ADD PRIMARY KEY (`id_sosmed`);
+  ADD PRIMARY KEY (`idSosmed`);
 
 --
 -- Indexes for table `transaction`
@@ -300,7 +377,7 @@ ALTER TABLE `trolli`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `idCategory` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idCategory` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -309,10 +386,16 @@ ALTER TABLE `contact`
   MODIFY `idContact` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `picture`
+--
+ALTER TABLE `picture`
+  MODIFY `idPicture` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `idProduct` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idProduct` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `sale`
