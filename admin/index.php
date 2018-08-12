@@ -1,4 +1,9 @@
 <?php
+    $string = file_get_contents('../config.json');
+	$json = json_decode($string, true);
+	if ($json['new'] == 1) {
+		header("Location: ../init.php");
+	}
     //include "../config/session.php";
     include "../config/config.php";
 ?>
