@@ -11,7 +11,7 @@
 </head>
 <body>
     <form action="categoryAdd.php" method="post">
-        Nama : <input type="text" name="name" require>
+        Nama : <input type="text" name="name" required>
         <input type="submit" value="Submit" name="submit">
     </form>
 </body>
