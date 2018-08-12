@@ -21,3 +21,9 @@ function categoryDelete(id, name) {
         request.send(input);
     }
 }
+
+function editDashboard(id, name){
+    document.getElementById('categoryEdit').style.display='block';
+    document.getElementById('editId').value = id;
+    document.getElementById('editName').value = name;
+}

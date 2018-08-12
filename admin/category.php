@@ -38,9 +38,9 @@
 
     <div class="w3-modal" style="display: none;" id="categoryEdit">
         <form action="categoryEdit.php" method="post" style="margin: 100px 500px; background-color: white; padding: 30px;">
-            <center><input type="text" name="name" required class="search" placeholder="Ubah Kategori" style="margin-right: 0px;" autofocus><br>
-            <input type="submit" value="Submit" name="submit" onclick="document.getElementById('categoryEdit').style.display='none'" class="w3-btn w3-red" style="margin-top: 20px;"></center>
-            <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+            <center><input type="text" name="editName" id="editName" required class="search" placeholder="Ubah Kategori" style="margin-right: 0px;" autofocus><br>
+            <input type="submit" value="Submit" name="editSubmit" onclick="document.getElementById('categoryEdit').style.display='none'" class="w3-btn w3-red" style="margin-top: 20px;"></center>
+            <input type="hidden" name="editId" id="editId">
         </form>
     </div>
 
@@ -59,7 +59,7 @@
                     ?>
                     <tr>
                         <td><?php echo $row['name']; ?></td>
-                        <td><center><a class="option" onclick="document.getElementById('categoryEdit').style.display='block'">Edit</a></center></td>
+                        <td><center><a class="option" onclick="editDashboard(<?php echo $row['idCategory'].",'".$row['name']."'"; ?>)">Edit</a></center></td>
                         <td><center><a onclick="categoryDelete(<?php echo $row['idCategory']; ?>,'<?php echo $row['name']; ?>')" class="option">Hapus</a></center></td>
                     </tr>
                     <?php
