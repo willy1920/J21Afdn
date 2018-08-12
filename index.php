@@ -31,9 +31,11 @@
 			$sql = "SELECT * FROM category";
 			$query = $mysqli->query($sql);
 			while ($row = $query->fetch_assoc()) {
-				?>
+				if($row['idCategory'] != 1){
+		?>		
 				<a href="#" style="width: 100%"><?php echo ucfirst($row['name']); ?></a>
-				<?php
+		<?php
+				}
 			}
 		?>
       </div>
