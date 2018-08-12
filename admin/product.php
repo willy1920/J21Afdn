@@ -62,8 +62,8 @@
       <td>Nama Produk</td>
       <td>Deskripsi</td>
       <td>Ukuran</td>
-      <td>Warna</td>
-      <td colspan="2">Option</td>
+      <td><center>Warna</center></td>
+      <td colspan="2"><center>Option</center></td>
     </tr>
     <?php
 	    $sql = "SELECT * FROM dataproduct";
@@ -75,7 +75,7 @@
     	<td><?php echo $row['name']; ?></td>
     	<td><?php echo $row['description']; ?></td>
     	<td><?php echo $row['size']; ?></td>
-    	<td><?php echo $row['color']; ?></td>
+    	<td style="padding-right: 20px; padding-left: 20px"><div style="padding: 10px; background-color:<?php echo $row['color']; ?>;"></div></td>
         <td><center><a class="option" onclick="document.getElementById('dataProductEdit').style.display='block'">Edit</a></center></td>
         <td><center><a onclick="productDelete(<?php echo $row['idProduct']; ?>,'<?php echo $row['name']; ?>')" class="option">Hapus</a></center></td>
     </tr>
