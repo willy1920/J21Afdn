@@ -27,12 +27,7 @@
 	<div class="w3-dropdown-hover">
       <button>Kategori</button>
       <div class="w3-dropdown-content w3-card-4" style="width: 200px; transition: 0.5s;">
-        <a href="#">Atasan Laki-laki</a>
-        <a href="#">Atasan Perempuan</a>
-        <a href="#">Bawahan Laki-laki</a>
-        <a href="#">Bawahan Perempuan</a>
-      <div class="w3-dropdown-content" style="width: 200px;">
-	  	<?php
+      	<?php
 			$sql = "SELECT * FROM category";
 			$query = $mysqli->query($sql);
 			while ($row = $query->fetch_assoc()) {
@@ -41,10 +36,6 @@
 				<?php
 			}
 		?>
-        <a href="#" style="width: 100%">Atasan Laki-laki</a>
-        <a href="#" style="width: 100%">Atasan Perempuan</a>
-        <a href="#" style="width: 100%">Bawahan Laki-laki</a>
-        <a href="#" style="width: 100%">Bawahan Perempuan</a>
       </div>
     </div>
 

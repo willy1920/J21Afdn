@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Toko Baju 1</title>
+	<title>Toko Baju 1 - Admin</title>
 	<meta name="google-signin-scope" content="profile email"> 
     <meta name="google-signin-client_id" content="571963356124-9nhkogpvo06cmqjnav3qh8cv3848n6na.apps.googleusercontent.com"> 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -18,7 +18,7 @@
     <a href="index.php"><button>Home</button></a>
 	<a href="product.php"><button>Produk</button></a>
     <a href="category.php"><button>Kategori</button></a>
-    <a href="sosmed.php"><button>Sosial Media</button></a>
+    <a href="sosmed.php"><button>Akun</button></a>
 	<button style="float: right;">Logout</button> 
 </div>
 

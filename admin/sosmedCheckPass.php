@@ -9,21 +9,24 @@
 
     $tmp = "";
     $key = "";
-    $sql = "SELECT pass, keySosmed WHERE idSosmed=? and type=?";
+    $iv = "";
+    $sql = "SELECT pass, keySosmed, ivSosmed FROM sosmed WHERE idSosmed=? AND type=?";
     if ($stmt = $mysqli->prepare($sql)) {
         $stmt->bind_param("is", $id, $type);
         if ($stmt->execute()) {
-            $stmt->bind_result($tmpPass, $key);
+            $stmt->bind_result($tmpPass, $key, $iv);
             $stmt->fetch();
 
             $cipher = "aes-128-gcm";
             if (in_array($cipher, openssl_get_cipher_methods())) {
-                $ivlen = openssl_cipher_iv_length($cipher);
-                $iv = openssl_random_pseudo_bytes($ivlen);
                 $cipherPass = openssl_encrypt($pass, $cipher, $key, $options=0, $iv, $tag);
                 //echo $cipherText."<br>";
-                echo $cipherPass."<br>";
-                echo $tmpPass."<br>";
+                if ($cipherPass == $tmpPass) {
+                    echo "1";
+                }
+                else{
+                    echo "Password salah";
+                }
                 //$originalText = openssl_decrypt($cipherText, $cipher, $key, $options = 0, $iv, $tag);
             }
         }
@@ -32,6 +35,7 @@
         }
     }
     else{
+        echo $mysqli->error;
         echo "Gagal menyiapkan sql";
     }
 

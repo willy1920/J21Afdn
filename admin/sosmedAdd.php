@@ -3,9 +3,9 @@
     include "../config/config.php";
 
     if (isset($_POST['addSubmit'])) {
-        $pass = htmlspecialchars($_POST['pass']);
-        $user = htmlspecialchars($_POST['user']);
-        $type = $_POST['type'];
+        $pass = htmlspecialchars($_POST['addPass']);
+        $user = htmlspecialchars($_POST['addUser']);
+        $type = $_POST['addType'];
 
         $cipher = "aes-128-gcm";
         $key = openssl_random_pseudo_bytes(10);
