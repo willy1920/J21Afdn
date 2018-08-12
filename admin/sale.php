@@ -61,8 +61,10 @@
             ?>
             </select><br>
             <input type="number" name="diskon" required class="search" placeholder="Jumlah Diskon" style="margin: 0 0 20px;"><br>
-            Jam dimulai : <input type="time" name="startSale" required style="margin: 0 0 20px;"><br>
-            Jam berakhir : <input type="time" name="finishSale" required style="margin: 0 0 20px;"><br>
+            Tanggal dimulai : <input type="date" name="startDate" required style="margin: 0 0 20px;"><br>
+            Tanggal berakhir : <input type="date" name="finishDate" required style="margin: 0 0 20px;"><br>
+            Jam dimulai : <input type="time" name="startTime" required style="margin: 0 0 20px;"><br>
+            Jam berakhir : <input type="time" name="finishTime" required style="margin: 0 0 20px;"><br>
             <input type="number" name="batasStock" required class="search" placeholder="Batas Stock" style="margin: 0 0 20px;"><br>
             <input type="submit" value="Submit" name="submit" onclick="document.getElementById('categoryEdit').style.display='none'" class="w3-btn w3-red"></center>
         </form>
