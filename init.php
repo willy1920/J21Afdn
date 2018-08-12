@@ -118,19 +118,11 @@
 <link rel="stylesheet" type="text/css" href="style/w3.css">
 <link rel="stylesheet" type="text/css" href="style/css.css">
 <div class="w3-modal" style="display: block;">
-<<<<<<< HEAD
-    <form action="init.php" method="post" style="margin: 20px 100px; background-color: white; padding: 30px 15px 30px 50px;">
-        <center><input type="text" name="name" required class="search" placeholder="Masukkan Nama Toko" style="margin: 0 20px 20px -20px;" autofocus>
-        <input type="text" name="linkFb" required class="search" placeholder="Masukkan Link Facebook" style="margin: 0 20px 20px;">
-        <input type="text" name="linkIg" required class="search" placeholder="Masukkan Link Instagram" style="margin: 0 20px 20px;">
-        <input type="text" name="linkGplus" required class="search" placeholder="Masukkan Link Google+" style="margin: 0 20px 20px;"><br>
-=======
     <form action="init.php" method="post" enctype="multipart/form-data" style="margin: 20px 100px; background-color: white; padding: 30px 15px 30px 50px;">
         <center><input type="text" name="name" required class="search" placeholder="Masukkan Nama" style="margin: 0 20px 20px -20px;" autofocus>
         <input type="text" name="facebook" required class="search" placeholder="Masukkan Link Facebook" style="margin: 0 20px 20px;">
         <input type="text" name="instagram" required class="search" placeholder="Masukkan Link Instagram" style="margin: 0 20px 20px;">
         <input type="text" name="google" required class="search" placeholder="Masukkan Link Google+" style="margin: 0 20px 20px;"><br>
->>>>>>> af1790f4fe81b6b1fd6ee70733ee168db7bbc661
         <input type="text" name="database" required class="search" placeholder="Masukkan Nama Database" style="margin: 0 20px 20px -20px;">
         <input type="text" name="host" required class="search" placeholder="Masukkan Host Database" style="margin: 0 20px 20px;">
         <input type="text" name="dbUser" required class="search" placeholder="Masukkan User Database" style="margin: 0 20px 20px;">
