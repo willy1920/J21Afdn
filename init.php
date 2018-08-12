@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="style/css.css">
 <div class="w3-modal" style="display: block;">
     <form action="init.php" method="post" style="margin: 20px 100px; background-color: white; padding: 30px 15px 30px 50px;">
-        <center><input type="text" name="name" required class="search" placeholder="Masukkan Nama" style="margin: 0 20px 20px -20px;" autofocus>
+        <center><input type="text" name="name" required class="search" placeholder="Masukkan Nama Toko" style="margin: 0 20px 20px -20px;" autofocus>
         <input type="text" name="linkFb" required class="search" placeholder="Masukkan Link Facebook" style="margin: 0 20px 20px;">
         <input type="text" name="linkIg" required class="search" placeholder="Masukkan Link Instagram" style="margin: 0 20px 20px;">
         <input type="text" name="linkGplus" required class="search" placeholder="Masukkan Link Google+" style="margin: 0 20px 20px;"><br>
