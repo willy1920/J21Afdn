@@ -25,7 +25,7 @@
 	<button style="float: right;">Logout</button> 
 </div>
 
-<div class="w3-modal" style="display: block;" id="productAdd">
+<div class="w3-modal" style="display: none;" id="productAdd">
     <form action="productAdd.php" method="post" enctype="multipart/form-data" style="margin: -35px 450px; background-color: white; padding: 30px 0px 30px 60px;">
 	    <input type="text" name="name" required class="search" placeholder="Masukkan Nama Produk" style="margin: 0 0 10px 55px;" autofocus><br>
 	    Upload gambar : <input type="file" name="picture[]" multiple required style="margin: 0 0 10px 0;" accept="image/*"><br>
