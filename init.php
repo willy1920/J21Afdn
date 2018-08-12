@@ -1,7 +1,9 @@
-<<<<<<< HEAD
 <?php
-    $string = file_get_contents('../config.json');
+    $string = file_get_contents("config.json");
     $json = json_decode($string, true);
+    if ($json['new'] == 0) {
+        header("Location: admin/");
+    }
     
     if (isset($_POST['submit'])) {
         //buat database awal
@@ -10,11 +12,9 @@
         $user = htmlspecialchars($_POST['dbUser']);
         $pass = htmlspecialchars($_POST['dbPass']);
 
-        $sql = "CREATE DATABASE ?";
-        $stmt = mysqli_connect($host, $user, $pass);
-        if ($stmt->prepare($sql)) {
-            $stmt->bind_param("s", $db);
-            if ($stmt->execute()) {
+        $sql = "CREATE DATABASE $db";
+        $mysqli = mysqli_connect($host, $user, $pass);
+        if ($query = $mysqli->query($sql)) {
                 $json['new'] = 0;
                 $json['host'] = $host;
                 $json['user'] = $user;
@@ -23,7 +23,7 @@
 
                 $conn =new mysqli($host, $user, $pass , $db);
                 $query = '';
-                $sqlScript = file('../Database/database.sql');
+                $sqlScript = file('Database/database.sql');
                 foreach ($sqlScript as $line)	{
                     
                     $startWith = substr(trim($line), 0 ,2);
@@ -42,22 +42,17 @@
                 echo '<div class="success-response sql-import-response">SQL file imported successfully</div>';
 
                 //rewrite json
-                $fp = fopen('../config.json', 'w');
+                $fp = fopen("config.json", 'w');
                 fwrite($fp, json_encode($json));
                 fclose($fp);
             }
-            else{
-                echo "Gagal eksekusi database";
-            }
-        }
         else{
             echo "Error create database";
         }
 
 
-
         //profile
-        $name = htmlspecialchars($_POST['name']);
+        $nameProfile = htmlspecialchars($_POST['name']);
         $address = htmlspecialchars($_POST['address']);
         $instagram = htmlspecialchars($_POST['instagram']);
         $facebook = htmlspecialchars($_POST['facebook']);
@@ -80,21 +75,39 @@
         }
 
         //check pixel di dalam file
-        $uploaddir = "../icon/";
+        $uploaddir = "icon/";
         $fileName = "logo.".$extension;
         $uploadfile = $uploaddir.$fileName;
         $imageInfo = getimagesize($tmpFile);
         if ($a) {
             if($imageInfo[0] > 0 && $imageInfo[1] > 0){
                 if (move_uploaded_file($tmpFile, $uploadfile)) {
-
+                    $mysqli = mysqli_connect($host, $user, $pass, $db);
+                    $sql = "INSERT INTO profile(name, address, logo, instagram, facebook, google)
+                            VALUES (?, ?, ?, ?, ?, ?)";
+                    if($stmt = $mysqli->prepare($sql)){
+                        $stmt->bind_param("ssssss", $nameProfile, $address, $fileName, $instagram, $facebook, $google);
+                        if ($stmt->execute()) {
+                            echo "berhasil";
+                        }
+                        else{
+                            echo "Gagal mengeksekusi sql";
+                        }
+                    }
+                    else{
+                        echo "Gagal menyiapkan sql";
+                    }
+                    $sql = "INSERT INTO category(name) VALUES('unknown')";
+                    if ($query = $mysqli->query($sql)) {
+                        header("Location: admin/");
+                    }
                 } else {
-                    header("Location: product.php?message=Gagal mengunggah file");
+                    header("Location: init.php?message=Gagal mengunggah file");
                     //echo "Possible file upload attack!\n";
                 }
             }
             else{
-                header("Location: product.php?message=File bukan gambar");
+                header("Location: init.php?message=File bukan gambar");
                 //echo "file bukan gambar";
             }
         }
@@ -102,22 +115,20 @@
 
     }
 ?>
-=======
 <link rel="stylesheet" type="text/css" href="style/w3.css">
 <link rel="stylesheet" type="text/css" href="style/css.css">
 <div class="w3-modal" style="display: block;">
-    <form action="init.php" method="post" style="margin: 20px 100px; background-color: white; padding: 30px 15px 30px 50px;">
+    <form action="init.php" method="post" enctype="multipart/form-data" style="margin: 20px 100px; background-color: white; padding: 30px 15px 30px 50px;">
         <center><input type="text" name="name" required class="search" placeholder="Masukkan Nama" style="margin: 0 20px 20px -20px;" autofocus>
-        <input type="text" name="linkFb" required class="search" placeholder="Masukkan Link Facebook" style="margin: 0 20px 20px;">
-        <input type="text" name="linkIg" required class="search" placeholder="Masukkan Link Instagram" style="margin: 0 20px 20px;">
-        <input type="text" name="linkGplus" required class="search" placeholder="Masukkan Link Google+" style="margin: 0 20px 20px;"><br>
+        <input type="text" name="facebook" required class="search" placeholder="Masukkan Link Facebook" style="margin: 0 20px 20px;">
+        <input type="text" name="instagram" required class="search" placeholder="Masukkan Link Instagram" style="margin: 0 20px 20px;">
+        <input type="text" name="google" required class="search" placeholder="Masukkan Link Google+" style="margin: 0 20px 20px;"><br>
         <input type="text" name="database" required class="search" placeholder="Masukkan Nama Database" style="margin: 0 20px 20px -20px;">
         <input type="text" name="host" required class="search" placeholder="Masukkan Host Database" style="margin: 0 20px 20px;">
         <input type="text" name="dbUser" required class="search" placeholder="Masukkan User Database" style="margin: 0 20px 20px;">
         <input type="text" name="dbPass" class="search" placeholder="Masukkan Password Database" style="margin: 0 20px 20px;"><br></center>
-        <textarea name="name" required class="search" placeholder="Masukkan Alamat" style="margin: 0 0px 20px 0px"></textarea><br>
-        Upload logo : <input type="file" name="logo" required style="margin: 0 20px 20px;"><br>
+        <textarea name="address" required class="search" placeholder="Masukkan Alamat" style="margin: 0 0px 20px 0px"></textarea><br>
+        Upload logo : <input type="file" accept="image/*" name="logo" required style="margin: 0 20px 20px;"><br>
         <center><input type="submit" value="Submit" name="submit" onclick="document.getElementById('categoryAdd').style.display='none'" class="w3-btn w3-red" style="margin: 20px 0 0 -40px;"></center>
     </form>
 </div>
->>>>>>> d054c185e7ea08051f11720266a30c697ae47ae0
