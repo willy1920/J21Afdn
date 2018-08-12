@@ -17,17 +17,13 @@
     <link rel="stylesheet" type="text/css" href="../style/css.css">
 </head>
 <body>
-<div class="header w3-card-4">
-	<p class="toko"><i>Nama Toko</i></p>
-    <a href="index.php"><button>Home</button></a>
-	<a href="product.php"><button>Produk</button></a>
-    <a href="category.php"><button>Kategori</button></a>
-    <a href="account.php"><button>Akun</button></a>
-	<button style="float: right;">Logout</button> 
-</div>
+<?php
+    include 'menu.php';
+?>
 
 <div class="w3-modal" style="display: none;" id="productAdd">
     <form action="productAdd.php" method="post" enctype="multipart/form-data" style="margin: -35px 450px; background-color: white; padding: 30px 0px 30px 60px;">
+        <button class="cancel w3-btn w3-red" onclick="document.getElementById('productAdd').style.display='none'" style="margin: -30px 0px">X</button>
 	    <input type="text" name="name" required class="search" placeholder="Masukkan Nama Produk" style="margin: 0 0 10px 55px;" autofocus><br>
 	    Upload gambar : <input type="file" name="picture[]" multiple required style="margin: 0 0 10px 0;" accept="image/*"><br>
 	    <input type="text" name="description" required class="search" placeholder="Masukkan Deskripsi Produk" style="margin: 0 0 10px 55px;"><br>
