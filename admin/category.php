@@ -28,15 +28,15 @@
     <div class="w3-modal" style="display: none;" id="categoryAdd">
         <form action="categoryAdd.php" method="post" style="margin: 100px 500px; background-color: white; padding: 30px;">
             <button class="cancel w3-btn w3-red" onclick="document.getElementById('categoryAdd').style.display='none'">X</button>
-            <center><input type="text" name="name" required class="search" placeholder="Masukkan Kategori" style="margin-right: 0px;" autofocus><br>
-            <input type="submit" value="Submit" name="submit" onclick="document.getElementById('categoryAdd').style.display='none'" class="w3-btn w3-red" style="margin-top: 20px;"></center>
+            <center><input type="text" id="addCategoryName" name="name" required class="search" placeholder="Masukkan Kategori" style="margin-right: 0px;"><br>
+            <input type="submit" value="Submit" name="addSubmit" onclick="addCategory()" class="w3-btn w3-red" style="margin-top: 20px;"></center>
         </form>
     </div>
 
     <div class="w3-modal" style="display: none;" id="categoryEdit">
         <form action="categoryEdit.php" method="post" style="margin: 100px 500px; background-color: white; padding: 30px;">
             <button class="cancel w3-btn w3-red" onclick="document.getElementById('categoryAdd').style.display='none'">X</button>
-            <center><input type="text" name="editName" id="editName" required class="search" placeholder="Ubah Kategori" style="margin-right: 0px;" autofocus><br>
+            <center><input type="text" name="editName" id="editName" required class="search" placeholder="Ubah Kategori" style="margin-right: 0px;"><br>
             <input type="submit" value="Submit" name="editSubmit" onclick="document.getElementById('categoryEdit').style.display='none'" class="w3-btn w3-red" style="margin-top: 20px;"></center>
             <input type="hidden" name="editId" id="editId">
         </form>
