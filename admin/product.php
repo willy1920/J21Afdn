@@ -26,13 +26,29 @@
 </div>
 
 <div class="w3-modal" style="display: none;" id="productAdd">
-    <form action="productAdd.php" method="post" style="margin: 50px 450px; background-color: white; padding: 30px 0px 30px 40px;">
-	    <center><input type="text" name="idProduct" required class="search" placeholder="Masukkan ID Produk" style="margin: 0 0 10px -50px;" autofocus><br>
-	    <input type="text" name="name" required class="search" placeholder="Masukkan Nama Produk" style="margin: 0 0 10px -50px;"><br>
-	    Upload gambar : <input type="file" name="picture" required style="margin: 0 0 10px 0;"><br>
-	    <input type="text" name="deskripsi" required class="search" placeholder="Masukkan Deskripsi Produk" style="margin: 0 0 10px -50px;"><br>
-	    <input type="text" name="ukuran" required class="search" placeholder="Masukkan Ukuran Produk" style="margin: 0 0 10px -50px;"><br>
-	    <input type="text" name="warna" required class="search" placeholder="Masukkan Warna Produk" style="margin: 0 0 10px -50px;"><br>
+    <form action="productAdd.php" method="post" enctype="multipart/form-data" style="margin: 50px 450px; background-color: white; padding: 30px 0px 30px 40px;">
+	    <input type="text" name="name" required class="search" placeholder="Masukkan Nama Produk" style="margin: 0 0 10px -50px;" autofocus><br>
+	    Upload gambar : <input type="file" name="picture[]" multiple required style="margin: 0 0 10px 0;" accept="image/*"><br>
+	    <input type="text" name="description" required class="search" placeholder="Masukkan Deskripsi Produk" style="margin: 0 0 10px -50px;"><br>
+	    <input type="text" name="smallSize" required class="search" placeholder="Ukuran paling kecil" style="margin: 0 0 10px -50px;"><br>
+	    <input type="text" name="bigSize" required class="search" placeholder="Ukuran paling besar" style="margin: 0 0 10px -50px;"><br>
+	    <input type="color" name="color" required class="search" placeholder="Masukkan Warna Produk" style="margin: 0 0 10px -50px;"><br>
+        <select name="category">
+            <?php
+            $sql = "SELECT * FROM category";
+            $query = $mysqli->query($sql);
+            while($row = $query->fetch_assoc()){
+                if($row['idCategory'] != 1){
+                    ?>
+                    <option value="<?php echo $row['idCategory']; ?>"><?php echo $row['name']; ?></option>
+                    <?php
+                }
+            }
+            ?>
+        </select><br>
+	    <input type="number" name="capital" required class="search" placeholder="Harga Modal" style="margin: 0 0 10px -50px;"><br>
+	    <input type="number" name="sellingPrice" required class="search" placeholder="Harga Jual" style="margin: 0 0 10px -50px;"><br>
+	    <input type="number" name="stock" required class="search" placeholder="Jumlah" style="margin: 0 0 10px -50px;"><br>
         <input type="submit" value="Submit" name="submit" onclick="document.getElementById('productAdd').style.display='none'" class="w3-btn w3-red" style="margin: 10px 0 0 -50px;"></center>
     </form>
 </div>

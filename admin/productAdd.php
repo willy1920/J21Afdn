@@ -13,7 +13,8 @@
             $image = $_FILES['picture']['name'][$i];
             $tmp = explode(".", $image);
             $extension = count($tmp) - 1;
-            $uploadfile = $uploaddir.md5($tmp[0]).".".$tmp[$extension];
+            $fileName = md5($tmp[0]);
+            $uploadfile = $uploaddir.$fileName.".".$tmp[$extension];
             $a = false;
 
             //cek ekstensi
@@ -26,17 +27,20 @@
             if ($a) {
                 if($imageInfo[0] > 0 && $imageInfo[1] > 0){
                     if (move_uploaded_file($_FILES['picture']['tmp_name'][$i], $uploadfile)) {
-                        array_push($valueSql, md5($tmp[0]).".".$tmp[$extension]);
+                        array_push($valueSql, $fileName.".".$tmp[$extension]);
                     } else {
-                        echo "Possible file upload attack!\n";
+                        header("Location: product.php?message=Gagal mengunggah file");
+                        //echo "Possible file upload attack!\n";
                     }
                 }
                 else{
-                    echo "file bukan gambar";
+                    header("Location: product.php?message=File bukan gambar");
+                    //echo "file bukan gambar";
                 }
             }
             else{
-                echo "exteksi tidak diterima";
+                header("Location: product.php?message=Extensi tidak diterima");
+                //echo "exteksi tidak diterima";
             }
         }
         $name = htmlspecialchars($_POST['name']);
@@ -59,6 +63,14 @@
             if ($stmt->execute()) {
                 $idProduct = $stmt->insert_id;
             }
+            else{
+                header("Location: product.php?message=Produk gagal dieksekusi");
+                //echo "execute failed";
+            }
+        }
+        else{
+            header("Location: product.php?message=Produk gagal disiapkan");
+            //echo "prepare failed";
         }
 
         //insert detail to dataproduct
@@ -68,27 +80,33 @@
         if ($stmt) {
             $stmt->bind_param("issss", $idProduct, $name, $description, $size, $color);
             if ($stmt->execute()) {
-                echo "berhasil";
+
             }
             else{
-                echo "execute failed";
+                header("Location: product.php?message=Data produk gagal dieksekusi");
+                //echo "execute failed";
             }
         }
         else{
-            echo "prepare failed";
+            header("Location: product.php?message=Data produk gagal disiapkan");
+            //echo "prepare failed";
         }
 
         $stringSql = "";
         for ($i=0; $i < count($valueSql); $i++) {
             if ($i != count($valueSql) - 1) {
-                $stringSql .= "('".$idProduct."','".$valueSql[$i]."'),";
+                $stringSql .= "('".$idProduct."','".$idProduct.$valueSql[$i]."'),";
             } 
             else{
-                $stringSql .= "('".$idProduct."','".$valueSql[$i]."')";
+                $stringSql .= "('".$idProduct."','".$idProduct.$valueSql[$i]."')";
             }
         }
         $sql = "INSERT INTO picture (idProduct, picture) VALUES ".$stringSql;
         $query = $mysqli->query($sql);
+        if (query) {
+            header("Location: product.php");
+            //echo "prepare failed";
+        }
         //$imageInfo = getimagesize($_FILES['picture']["tmp_name"]);
         /*for ($i=0; $i < count($accept); $i++) { 
             for ($j=0; $j < count($_FILES['picture']['name']); $j++) { 
