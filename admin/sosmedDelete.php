@@ -1,5 +1,5 @@
 <?php
-    //include "../config/session.php";
+    include "../config/session.php";
     include "../config/config.php";
 
     $id = $_POST['id'];

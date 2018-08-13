@@ -4,7 +4,7 @@
 	if ($json['new'] == 1) {
 		header("Location: ../init.php");
 	}
-    //include "../config/session.php";
+    include "../config/session.php";
     include "../config/config.php";
 ?>
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 <?php
-    //include "../config/session.php";
+    include "../config/session.php";
     include "../config/config.php";
     if (isset($_GET['message'])) {
         ?><script>alert("<?php echo $_GET['message']; ?>")</script><?php
