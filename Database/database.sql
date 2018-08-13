@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 12, 2018 at 08:55 AM
+-- Generation Time: Aug 13, 2018 at 06:57 AM
 -- Server version: 5.7.19
--- PHP Version: 7.2.2
+-- PHP Version: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,6 +45,15 @@ CREATE TABLE `category` (
   `idCategory` tinyint(3) UNSIGNED NOT NULL,
   `name` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`idCategory`, `name`) VALUES
+(1, 'unknown'),
+(2, 'Atasan Pria'),
+(3, 'Atasan Wanita');
 
 -- --------------------------------------------------------
 
@@ -86,6 +95,14 @@ CREATE TABLE `dataproduct` (
   `color` char(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `dataproduct`
+--
+
+INSERT INTO `dataproduct` (`idProduct`, `name`, `description`, `size`, `color`) VALUES
+(1, 'kemeja putih', 'keren', '12-32', '#ffffff'),
+(2, 'Celana Jeans', '123', '12-13', '#000000');
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +114,14 @@ CREATE TABLE `picture` (
   `idProduct` smallint(5) UNSIGNED NOT NULL,
   `picture` char(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `picture`
+--
+
+INSERT INTO `picture` (`idPicture`, `idProduct`, `picture`) VALUES
+(1, 1, '1911af7aa209e00b49f3d6fd2afa92564.png'),
+(2, 2, '2911af7aa209e00b49f3d6fd2afa92564.png');
 
 -- --------------------------------------------------------
 
@@ -112,6 +137,14 @@ CREATE TABLE `product` (
   `stock` smallint(5) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`idProduct`, `idCategory`, `capital`, `sellingPrice`, `stock`) VALUES
+(1, 2, 15000, 300000, 150),
+(2, 2, 10000, 195000, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -126,6 +159,13 @@ CREATE TABLE `profile` (
   `facebook` char(200) NOT NULL,
   `google` char(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `profile`
+--
+
+INSERT INTO `profile` (`name`, `address`, `logo`, `instagram`, `facebook`, `google`) VALUES
+('tokobaju1', 'jl.merdeka', 'logo.png', 'instagram', 'facebook', 'google');
 
 -- --------------------------------------------------------
 
@@ -147,11 +187,24 @@ CREATE TABLE `province` (
 CREATE TABLE `sale` (
   `idSale` smallint(5) UNSIGNED NOT NULL,
   `idProduct` smallint(5) UNSIGNED NOT NULL,
-  `percent` tinyint(2) UNSIGNED NOT NULL,
-  `startDate` datetime NOT NULL,
-  `endDate` datetime NOT NULL,
-  `stock` smallint(5) NOT NULL
+  `discount` mediumint(8) UNSIGNED NOT NULL,
+  `startSale` datetime NOT NULL,
+  `finishSale` datetime NOT NULL,
+  `stock` smallint(5) NOT NULL,
+  `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sale`
+--
+
+INSERT INTO `sale` (`idSale`, `idProduct`, `discount`, `startSale`, `finishSale`, `stock`, `status`) VALUES
+(1, 2, 999, '2018-08-12 07:00:00', '2018-08-12 08:00:00', 1, 0),
+(2, 1, 0, '2018-09-12 13:00:00', '2018-09-12 14:00:00', 10, 1),
+(3, 1, 0, '2018-01-20 01:12:00', '2018-02-20 01:12:00', 10, 0),
+(4, 1, 0, '2018-08-12 19:00:00', '2018-08-12 19:00:00', 10, 1),
+(5, 1, 10000, '2018-08-12 18:00:00', '2018-08-12 18:00:00', 10, 0),
+(6, 2, 10000, '2018-08-12 19:00:00', '2018-08-12 20:00:00', 100, 0);
 
 -- --------------------------------------------------------
 
@@ -313,7 +366,7 @@ ALTER TABLE `trolli`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `idCategory` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idCategory` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -325,25 +378,25 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `picture`
 --
 ALTER TABLE `picture`
-  MODIFY `idPicture` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idPicture` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `idProduct` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idProduct` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `idSale` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idSale` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `sosmed`
 --
 ALTER TABLE `sosmed`
-  MODIFY `idSosmed` tinyint(2) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idSosmed` tinyint(2) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

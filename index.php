@@ -1,10 +1,5 @@
 <?php
 	include "config/config.php";
-	session_start();
-
-	if (isset($_SESSION['status']) && isset($_SESSION['idToken'])) {
-		# code...
-	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +58,8 @@
 
 <div class="isi">
 <?php
-	$sql = "SELECT "
+	$sql = "SELECT * FROM dataproduct";
+	$query
 ?>
 	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
 		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
