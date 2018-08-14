@@ -1,5 +1,5 @@
 <?php
-    //include "../config/session.php";
+    include "../config/session.php";
     include "../config/config.php";
     if (isset($_POST['addSubmit'])) {
         $sql = "INSERT INTO category (name) VALUES(?)";
