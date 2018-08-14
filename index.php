@@ -36,7 +36,7 @@
 		?>
       </div>
     </div>
-
+	
 	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="float: right;"></div> 
     <script>
         
@@ -94,6 +94,7 @@
 	if ($query = $mysqli->query($sql)) {
 		while ($row = $query->fetch_assoc()) {
 			?>
+<<<<<<< HEAD
 			<a href="detailProduct.php?idProduct=<?php echo $row['idProduct']; ?>">
                 <div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
                     <img src="productPicture/<?php echo $row['picture']; ?>" alt="Norway" style="width: 200px">
@@ -103,6 +104,15 @@
                     </div>
                 </div>
             </a>
+=======
+			<div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 50px 0;">
+				<img src="productPicture/<?php echo $row['picture']; ?>" alt="Norway" style="width: 200px">
+				<div style="padding: 10px;">
+					<b>Pedofil</b><br>
+					Rp 1.000,-
+				</div>
+			</div>
+>>>>>>> 8e3e2bfbaa73f7259bcc2b618e931af9dfe8d429
 			<?php
 		}
 	}
