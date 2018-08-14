@@ -92,7 +92,7 @@
 		while ($row = $query->fetch_assoc()) {
 			echo "productPicture/".$row['picture'];
 			?>
-			<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
+			<div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 50px 0;">
 				<img src="productPicture/<?php echo $row['picture']; ?>" alt="Norway" style="width: 200px">
 				<div style="padding: 10px;">
 					<b>Pedofil</b><br>
@@ -103,51 +103,6 @@
 		}
 	}
 ?>
-<<<<<<< HEAD
-	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 0px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 60px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-=======
->>>>>>> 8434754457b6bb1aac882f5ae9472600b786d8ac
 </div>
 </body>
 </html>
