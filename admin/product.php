@@ -25,7 +25,7 @@
     <form action="productAdd.php" method="post" enctype="multipart/form-data" style="margin: -35px 450px; background-color: white; padding: 30px 0px 30px 60px;">
         <button class="cancel w3-btn w3-red" onclick="document.getElementById('productAdd').style.display='none'" style="margin: -30px 0px">X</button>
 	    <input type="text" name="name" required class="search" placeholder="Masukkan Nama Produk" style="margin: 0 0 10px 55px;" autofocus><br>
-	    Upload gambar : <input type="file" name="picture[]" multiple required style="margin: 0 0 10px 0;" accept="image/*"><br>
+	    Upload gambar : <input type="file" name="picture" required style="margin: 0 0 10px 0;" accept="image/*"><br>
 	    <input type="text" name="description" required class="search" placeholder="Masukkan Deskripsi Produk" style="margin: 0 0 10px 55px;"><br>
 	    <input type="text" name="smallSize" required class="search" placeholder="Ukuran paling kecil" style="margin: 0 0 10px 55px;"><br>
 	    <input type="text" name="bigSize" required class="search" placeholder="Ukuran paling besar" style="margin: 0 0 10px 55px;"><br>

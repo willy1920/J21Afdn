@@ -58,8 +58,28 @@
 
 <div class="isi">
 <?php
-	$sql = "SELECT * FROM dataproduct";
-	$query
+	$sql = "SELECT product.idProduct, 
+			product.sellingPrice, 
+			dataproduct.name, 
+			sale.startSale
+			sale.finishSale
+			sale.idSale
+			FROM product
+			INNER JOIN dataproduct
+			ON product.idProduct = dataproduct.idProduct
+			INNER JOIN sale.idProduct = product.idProduct";
+	$query = $mysqli->query($sql);
+	while ($row = $query->fetch_assoc()) {
+	?>
+	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
+		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
+		<div style="padding: 10px;">
+		    <b>Pedofil</b><br>
+		    Rp 1.000,-
+		</div>
+	</div>
+	<?php
+	}
 ?>
 	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
 		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">

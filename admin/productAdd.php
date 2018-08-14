@@ -5,42 +5,31 @@
 
     $valueSql = array();
     if (isset($_POST['submit'])) {
-        $accept = array("jpg");
+        $accept = "jpg";
+        $uploaddir = "../productPicture/";
+        $imageInfo = getimagesize($_FILES['picture']['tmp_name']);
+        $image = $_FILES['picture']['name'];
+        $tmp = explode(".", $image);
+        $extension = count($tmp) - 1;
+        $fileName = md5($tmp[0]);
+        $uploadfile = $uploaddir.$fileName.".".$tmp[$extension];
 
-        for ($i=0; $i < count($_FILES['picture']['name']); $i++) {
-            
-            $uploaddir = "../productPicture/";
-            $imageInfo = getimagesize($_FILES['picture']['tmp_name'][$i]);
-            $image = $_FILES['picture']['name'][$i];
-            $tmp = explode(".", $image);
-            $extension = count($tmp) - 1;
-            $fileName = md5($tmp[0]);
-            $uploadfile = $uploaddir.$fileName.".".$tmp[$extension];
-            $a = false;
-
-            //cek ekstensi
-            for ($j=0; $j < count($accept); $j++) { 
-                if($accept[$j] == $tmp[$extension]) {
-                    $a = true;
-                    break;
-                }
-            }
-            if ($a) {
-                if($imageInfo[0] > 0 && $imageInfo[1] > 0){
-                    if (move_uploaded_file($_FILES['picture']['tmp_name'][$i], $uploadfile)) {
-                        array_push($valueSql, $fileName.".".$tmp[$extension]);
-                    } else {
-                        header("Location: product.php?message=Gagal mengunggah file");
-                    }
-                }
-                else{
-                    header("Location: product.php?message=File bukan gambar");
+        if ($accept == $tmp[$extension]) {
+            if($imageInfo[0] > 0 && $imageInfo[1] > 0){
+                if (move_uploaded_file($_FILES['picture']['tmp_name'], $uploadfile)) {
+                    array_push($valueSql, $fileName.".".$tmp[$extension]);
+                } else {
+                    header("Location: product.php?message=Gagal mengunggah file");
                 }
             }
             else{
-                header("Location: product.php?message=Extensi tidak diterima");
+                header("Location: product.php?message=File bukan gambar");
             }
         }
+        else{
+            header("Location: product.php?message=Extensi tidak diterima");
+        }
+        //end for
         $name = htmlspecialchars($_POST['name']);
         $description = htmlspecialchars($_POST['description']);
         $category = $_POST['category'];
@@ -69,13 +58,14 @@
         }
 
         //insert detail to dataproduct
-        $sql = "INSERT INTO dataproduct (idProduct, name, description, size, color)
-                VALUES (?, ?, ?, ?, ?)";
+        $newImageName = $idProduct.$fileName.".".$tmp[$extension];
+        $sql = "INSERT INTO dataproduct (idProduct, name, description, size, color, picture)
+                VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $mysqli->prepare($sql);
         if ($stmt) {
-            $stmt->bind_param("issss", $idProduct, $name, $description, $size, $color);
+            $stmt->bind_param("isssss", $idProduct, $name, $description, $size, $color, $newImageName);
             if ($stmt->execute()) {
-
+                rename($_SERVER['DOCUMENT_ROOT']."productPicture/".$fileName.".".$tmp[$extension], $_SERVER['DOCUMENT_ROOT']."productPicture/".$idProduct.$newImageName);
             }
             else{
                 header("Location: product.php?message=Data produk gagal dieksekusi");
@@ -85,25 +75,6 @@
             header("Location: product.php?message=Data produk gagal disiapkan");
         }
 
-        $stringSql = "";
-        for ($i=0; $i < count($valueSql); $i++) {
-            if ($i != count($valueSql) - 1) {
-                $stringSql .= "('".$idProduct."','".$idProduct.$valueSql[$i]."'),";
-            } 
-            else{
-                $stringSql .= "('".$idProduct."','".$idProduct.$valueSql[$i]."')";
-            }
-        }
-        $sql = "INSERT INTO picture (idProduct, picture) VALUES ".$stringSql;
-        $query = $mysqli->query($sql);
-        if (!$query) {
-            header("Location: product.php?message=Gagal input lokasi gambar ke database");
-        }
-        for ($i=0; $i < count($valueSql); $i++) { 
-            rename($_SERVER['DOCUMENT_ROOT']."productPicture/".$valueSql[$i], $_SERVER['DOCUMENT_ROOT']."productPicture/".$idProduct.$valueSql[$i]);
-        }
-        
-
         $sql = "SELECT userSosmed, pass FROM sosmed WHERE type='Instagram'";
         $query = $mysqli->query($sql);
         $row = $query->fetch_assoc();
@@ -112,7 +83,7 @@
         $pass = base64_decode($row['pass']);
         $instagram = new InstagramUpload;
         $instagram->Login($row['userSosmed'], $pass);
-        $instagram->UploadPhoto($_SERVER['DOCUMENT_ROOT']."productPicture/".$idProduct.$valueSql[0], $description);
-        header("Location: product.php");
+        $instagram->UploadPhoto($_SERVER['DOCUMENT_ROOT']."productPicture/".$idProduct.$image, $description);
+        //header("Location: product.php");
     }
 ?>

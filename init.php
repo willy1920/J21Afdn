@@ -129,6 +129,6 @@
         <input type="text" name="dbPass" class="search" placeholder="Masukkan Password Database" style="margin: 0 20px 20px;"><br></center>
         <textarea name="address" required class="search" placeholder="Masukkan Alamat" style="margin: 0 0px 20px 0px"></textarea><br>
         Upload logo : <input type="file" accept="image/*" name="logo" required style="margin: 0 20px 20px;"><br>
-        <center><input type="submit" value="Submit" name="submit" onclick="document.getElementById('categoryAdd').style.display='none'" class="w3-btn w3-red" style="margin: 20px 0 0 -40px;"></center>
+        <center><input type="submit" value="Submit" name="submit" class="w3-btn w3-red" style="margin: 20px 0 0 -40px;"></center>
     </form>
 </div>
