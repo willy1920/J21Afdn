@@ -65,7 +65,7 @@
         if ($stmt) {
             $stmt->bind_param("isssss", $idProduct, $name, $description, $size, $color, $newImageName);
             if ($stmt->execute()) {
-                rename($_SERVER['DOCUMENT_ROOT']."productPicture/".$fileName.".".$tmp[$extension], $_SERVER['DOCUMENT_ROOT']."productPicture/".$idProduct.$newImageName);
+                rename($_SERVER['DOCUMENT_ROOT']."productPicture/".$fileName.".".$tmp[$extension], $_SERVER['DOCUMENT_ROOT']."productPicture/".$newImageName);
             }
             else{
                 header("Location: product.php?message=Data produk gagal dieksekusi");
@@ -80,10 +80,10 @@
         $row = $query->fetch_assoc();
 
         //decrpt
-        $pass = base64_decode($row['pass']);
-        $instagram = new InstagramUpload;
-        $instagram->Login($row['userSosmed'], $pass);
-        $instagram->UploadPhoto($_SERVER['DOCUMENT_ROOT']."productPicture/".$idProduct.$image, $description);
+        //$pass = base64_decode($row['pass']);
+        //$instagram = new InstagramUpload;
+        //$instagram->Login($row['userSosmed'], $pass);
+        //$instagram->UploadPhoto($_SERVER['DOCUMENT_ROOT']."productPicture/".$idProduct.$image, $description);
         //header("Location: product.php");
     }
 ?>
