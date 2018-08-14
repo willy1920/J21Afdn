@@ -8,21 +8,38 @@
 	margin: 5px 50px;
 }
 .header button{
-	text-decoration: none;
-	color: red;
 	margin-top: -20px;
-	background-color: white;
-	border: none;
 	height: 70px;
 	font-size: 18px;
 	padding: 0 20px;
+}
+.menuProfil{
+	position: fixed;
+	right: 0;
+}
+.in{
+	transition: 0.5s;
+}
+.out{
+	margin-right: -250px;
+	transition: 0.5s;
+}
+.menuProfil a button{
+	height: 50px;
+	width: 250px;
+}
+.header button, .menuProfil a button{
+	text-decoration: none;
+	color: red;
+	background-color: white;
+	border: none;
 }
 .header a{
 	text-decoration: none;
 	width: 100%;
 	color: red;
 }
-.header button:hover, .header a:hover{
+.header button:hover, .header a:hover, .menuProfil a button:hover{
 	transition: 0.5s;
 	background-color:red;
 	color:white;
@@ -32,6 +49,14 @@
 	border: 1px solid red;
 	border-radius: 10px;
 	padding: 5px 15px;
+}
+.profil{
+	border-radius: 100%;
+	width: 60px;
+	height: 60px;
+	float: right;
+	margin: -15px 20px;
+	cursor: pointer;
 }
 .isi{
 	padding: 30px 50px;
@@ -44,4 +69,8 @@
 	font-size: 20px;
 	float: right;
 	margin: -30px;
+}
+.listItem{
+	font-size: 18px;
+	line-height: 5px;
 }

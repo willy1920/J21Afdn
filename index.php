@@ -35,7 +35,7 @@
 		?>
       </div>
     </div>
-
+	
 	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="float: right;"></div> 
     <script> 
       function onSignIn(googleUser) { 
@@ -61,42 +61,42 @@
 	$sql = "SELECT * FROM dataproduct";
 	$query
 ?>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
+	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 50px 0;">
 		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
 		<div style="padding: 10px;">
 		    <b>Pedofil</b><br>
 		    Rp 1.000,-
 		</div>
 	</div>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
+	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 50px 0;">
 		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
 		<div style="padding: 10px;">
 		    <b>Pedofil</b><br>
 		    Rp 1.000,-
 		</div>
 	</div>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
+	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 50px 0;">
 		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
 		<div style="padding: 10px;">
 		    <b>Pedofil</b><br>
 		    Rp 1.000,-
 		</div>
 	</div>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
+	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 50px 0;">
 		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
 		<div style="padding: 10px;">
 		    <b>Pedofil</b><br>
 		    Rp 1.000,-
 		</div>
 	</div>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 0px 50px 0;">
+	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 0px 50px 0;">
 		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
 		<div style="padding: 10px;">
 		    <b>Pedofil</b><br>
 		    Rp 1.000,-
 		</div>
 	</div>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 60px 50px 0;">
+	<div class="w3-card-4" style="width: 200px; float: left; margin: 0 60px 50px 0;">
 		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
 		<div style="padding: 10px;">
 		    <b>Pedofil</b><br>
