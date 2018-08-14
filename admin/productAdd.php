@@ -85,7 +85,7 @@
             $pass = base64_decode($row['pass']);
             $instagram = new InstagramUpload;
             $instagram->Login($row['userSosmed'], $pass);
-            $instagram->UploadPhoto($_SERVER['DOCUMENT_ROOT']."productPicture/".$idProduct.$image, $description);
+            $instagram->UploadPhoto($_SERVER['DOCUMENT_ROOT']."productPicture/".$newImageName, $description);
             header("Location: product.php");    
             }
         }
