@@ -12,6 +12,9 @@
             if($_SESSION['status'] == 1){
                 echo '{"status":"1","message":""}';
             }
+            else{
+                echo '{"status":"0","message":""}';
+            }
         }
         else{
             $sql = "INSERT INTO account (idAccount, status) VALUES ('$idGoogle', 0)";

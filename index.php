@@ -60,12 +60,15 @@
             var request =  ajax(request);
             request.onreadystatechange = function() {
                 if (request.status == 200 && request.readyState == 4) {
-                    var respon = JSON.parse(request.responseText);
-                    if(respon.status == 1){
+                    var respon = request.responseText;
+                    console.log(respon);
+                    
+                    //var json = JSON.parse(respon);
+                    if(json.status == 1){
                         window.location = "https://stromzivota.web.id/admin/index.php";
                     }
                     else{
-                        console.log(respon);
+                        console.log(json.message);
                     }
                 }
             };
@@ -90,15 +93,16 @@
 			ON product.idProduct = dataproduct.idProduct";
 	if ($query = $mysqli->query($sql)) {
 		while ($row = $query->fetch_assoc()) {
-			echo "productPicture/".$row['picture'];
 			?>
-			<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-				<img src="productPicture/<?php echo $row['picture']; ?>" alt="Norway" style="width: 200px">
-				<div style="padding: 10px;">
-					<b>Pedofil</b><br>
-					Rp 1.000,-
-				</div>
-			</div>
+			<a href="detailProduct.php?idProduct=<?php echo $row['idProduct']; ?>">
+                <div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
+                    <img src="productPicture/<?php echo $row['picture']; ?>" alt="Norway" style="width: 200px">
+                    <div style="padding: 10px;">
+                        <b><?php echo $row['name']; ?></b><br>
+                        <?php echo $row['sellingPrice']; ?>
+                    </div>
+                </div>
+            </a>
 			<?php
 		}
 	}
