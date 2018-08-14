@@ -65,7 +65,8 @@
         if ($stmt) {
             $stmt->bind_param("isssss", $idProduct, $name, $description, $size, $color, $newImageName);
             if ($stmt->execute()) {
-                rename($_SERVER['DOCUMENT_ROOT']."productPicture/".$fileName.".".$tmp[$extension], $_SERVER['DOCUMENT_ROOT']."productPicture/".$newImageName);
+                echo $_SERVER['DOCUMENT_ROOT']."/productPicture/".$fileName.".".$tmp[$extension];
+                rename($_SERVER['DOCUMENT_ROOT']."/productPicture/".$fileName.".".$tmp[$extension], $_SERVER['DOCUMENT_ROOT']."/productPicture/".$newImageName);
             }
             else{
                 header("Location: product.php?message=Data produk gagal dieksekusi");
