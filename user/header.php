@@ -24,6 +24,7 @@
 <div class="menuProfil w3-card-4 out" id="menuProfil" onmouseover="menuProfilIn()" onmouseout="menuProfilOut()">
     <a href="keranjang.php"><button>Keranjang</button></a><br>
 	<a href="konfirmasiPesanan.php"><button>Konfirmasi Pesanan</button></a><br>
+	<a href="statusPengiriman.php"><button>Status Pengiriman</button></a><br>
 	<a href="kontak.php"><button>Pengaturan Kontak</button></a><br>
 	<a href="../"><button>Log Out</button></a>
 </div>

@@ -5,5 +5,6 @@
         <a href="category.php"><button>Kategori</button></a>
         <a href="sosmed.php"><button>Akun</button></a>
         <a href="sale.php"><button>Promo</button></a>
+        <a href="paymentConfirm.php"><button>Konfirmasi Pembayaran</button></a>
         <a href="index.php?logout=true"><button style="float: right;">Logout</button></a>
     </div>

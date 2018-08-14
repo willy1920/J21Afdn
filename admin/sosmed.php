@@ -20,14 +20,9 @@
     <link rel="stylesheet" type="text/css" href="../style/css.css">
 </head>
 <body>
-<div class="header w3-card-4">
-	<p class="toko"><i>Nama Toko</i></p>
-    <a href="index.php"><button>Home</button></a>
-	<a href="product.php"><button>Produk</button></a>
-    <a href="category.php"><button>Kategori</button></a>
-    <a href="sosmed.php"><button>Akun</button></a>
-	<button style="float: right;">Logout</button> 
-</div>
+<?php
+    include 'menu.php';
+?>
 
 <div class="w3-modal" style="display: none;" id="sosmedAdd">
     <form action="sosmedAdd.php" method="post" style="margin: 50px 500px; background-color: white; padding: 30px;">

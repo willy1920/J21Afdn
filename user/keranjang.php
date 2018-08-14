@@ -88,7 +88,7 @@
             ?></select><br>
 
     <p style="margin-top: 40px">Total biaya : </p><br>
-    <button class="w3-btn w3-red" style="margin-top: 10px">Bayar</button>
+    <button class="w3-btn w3-red" style="margin-top: 10px">Konfirmasi Pesanan</button>
 </div>
 
 </body>
