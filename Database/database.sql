@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 14, 2018 at 12:01 AM
--- Server version: 10.3.8-MariaDB-log
--- PHP Version: 7.2.8
+-- Generation Time: Aug 14, 2018 at 08:34 PM
+-- Server version: 5.6.39-log
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tokobaju1`
+-- Database: `stromziv_tokobaju`
 --
 
 -- --------------------------------------------------------
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `account` (
-  `idToken` varchar(50) NOT NULL,
+  `idAccount` varchar(50) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `phoneNumber` char(12) DEFAULT NULL,
-  `email` char(40) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `email` char(50) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -45,6 +45,15 @@ CREATE TABLE `category` (
   `idCategory` tinyint(3) UNSIGNED NOT NULL,
   `name` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`idCategory`, `name`) VALUES
+(1, 'unknown'),
+(2, 'abc'),
+(3, 'baju bayi');
 
 -- --------------------------------------------------------
 
@@ -187,12 +196,12 @@ CREATE TABLE `sosmed` (
 --
 
 CREATE TABLE `transaction` (
-  `idToken` varchar(50) NOT NULL,
-  `idProduct` smallint(5) UNSIGNED NOT NULL,
-  `idSale` smallint(5) UNSIGNED DEFAULT NULL,
-  `total` smallint(5) UNSIGNED NOT NULL,
-  `capital` mediumint(8) UNSIGNED NOT NULL,
-  `sellingPrice` mediumint(8) UNSIGNED NOT NULL
+  `idTransaction` int(11) NOT NULL,
+  `idAccount` varchar(50) NOT NULL,
+  `productName` char(100) NOT NULL,
+  `total` tinyint(3) NOT NULL,
+  `capital` mediumint(8) NOT NULL,
+  `sellingPrice` mediumint(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -202,21 +211,15 @@ CREATE TABLE `transaction` (
 --
 
 CREATE TABLE `trolli` (
-  `idToken` varchar(50) NOT NULL,
-  `idProduct` smallint(5) UNSIGNED NOT NULL,
-  `idSale` smallint(5) UNSIGNED DEFAULT NULL,
-  `total` smallint(5) UNSIGNED NOT NULL
+  `idTrolli` int(11) NOT NULL,
+  `idAccount` varchar(50) NOT NULL,
+  `idProduct` smallint(5) NOT NULL,
+  `total` smallint(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `account`
---
-ALTER TABLE `account`
-  ADD PRIMARY KEY (`idToken`);
 
 --
 -- Indexes for table `category`
@@ -293,17 +296,13 @@ ALTER TABLE `sosmed`
 -- Indexes for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`idToken`),
-  ADD KEY `idProduct` (`idProduct`),
-  ADD KEY `idSale` (`idSale`);
+  ADD PRIMARY KEY (`idTransaction`);
 
 --
 -- Indexes for table `trolli`
 --
 ALTER TABLE `trolli`
-  ADD PRIMARY KEY (`idToken`),
-  ADD KEY `idProduct` (`idProduct`),
-  ADD KEY `idSale` (`idSale`);
+  ADD PRIMARY KEY (`idTrolli`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -313,7 +312,7 @@ ALTER TABLE `trolli`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `idCategory` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idCategory` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -346,6 +345,18 @@ ALTER TABLE `sosmed`
   MODIFY `idSosmed` tinyint(2) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `idTransaction` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `trolli`
+--
+ALTER TABLE `trolli`
+  MODIFY `idTrolli` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -374,22 +385,6 @@ ALTER TABLE `product`
 --
 ALTER TABLE `sale`
   ADD CONSTRAINT `sale_ibfk_1` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`);
-
---
--- Constraints for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`idToken`) REFERENCES `account` (`idToken`),
-  ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`),
-  ADD CONSTRAINT `transaction_ibfk_3` FOREIGN KEY (`idSale`) REFERENCES `sale` (`idSale`);
-
---
--- Constraints for table `trolli`
---
-ALTER TABLE `trolli`
-  ADD CONSTRAINT `trolli_ibfk_1` FOREIGN KEY (`idToken`) REFERENCES `account` (`idToken`),
-  ADD CONSTRAINT `trolli_ibfk_2` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`),
-  ADD CONSTRAINT `trolli_ibfk_3` FOREIGN KEY (`idSale`) REFERENCES `sale` (`idSale`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

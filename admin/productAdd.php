@@ -76,14 +76,18 @@
         }
 
         $sql = "SELECT userSosmed, pass FROM sosmed WHERE type='Instagram'";
-        $query = $mysqli->query($sql);
-        $row = $query->fetch_assoc();
-
-        //decrpt
-        //$pass = base64_decode($row['pass']);
-        //$instagram = new InstagramUpload;
-        //$instagram->Login($row['userSosmed'], $pass);
-        //$instagram->UploadPhoto($_SERVER['DOCUMENT_ROOT']."productPicture/".$idProduct.$image, $description);
-        //header("Location: product.php");
+        if($query = $mysqli->query($sql)){
+            if($query->num_rows > 0){
+                
+            $row = $query->fetch_assoc();
+    
+            //decrpt
+            $pass = base64_decode($row['pass']);
+            $instagram = new InstagramUpload;
+            $instagram->Login($row['userSosmed'], $pass);
+            $instagram->UploadPhoto($_SERVER['DOCUMENT_ROOT']."productPicture/".$idProduct.$image, $description);
+            header("Location: product.php");    
+            }
+        }
     }
 ?>

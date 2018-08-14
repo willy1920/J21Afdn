@@ -1,4 +1,5 @@
 <?php
+    include "config/session.php";
 	include "config/config.php";
 ?>
 <!DOCTYPE html>
@@ -6,7 +7,7 @@
 <head>
 	<title>Toko Baju 1</title>
 	<meta name="google-signin-scope" content="profile email"> 
-    <meta name="google-signin-client_id" content="571963356124-9nhkogpvo06cmqjnav3qh8cv3848n6na.apps.googleusercontent.com"> 
+    <meta name="google-signin-client_id" content="44829741526-n8hkhikvhdc03ace9qef0cj4lhm2mo3n.apps.googleusercontent.com"> 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="stylesheet" type="text/css" href="style/w3.css">
     <link rel="stylesheet" type="text/css" href="style/css.css">
@@ -37,21 +38,43 @@
     </div>
 
 	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="float: right;"></div> 
-    <script> 
-      function onSignIn(googleUser) { 
-        // Useful data for your client-side scripts: 
+    <script>
+        
+      function onSignIn(googleUser) {
+        var idGoogle;
+        // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile(); 
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server! 
-        console.log('Full Name: ' + profile.getName()); 
-        console.log('Given Name: ' + profile.getGivenName()); 
-        console.log('Family Name: ' + profile.getFamilyName()); 
-        console.log("Image URL: " + profile.getImageUrl()); 
-        console.log("Email: " + profile.getEmail());
+        idGoogle = profile.getEmail(); 
+        //console.log('Full Name: ' + profile.getName()); 
+        //console.log('Given Name: ' + profile.getGivenName()); 
+        //console.log('Family Name: ' + profile.getFamilyName()); 
+        //console.log("Image URL: " + profile.getImageUrl()); 
+        //console.log("Email: " + profile.getEmail());
 
         // The ID token you need to pass to your backend: 
-        var id_token = googleUser.getAuthResponse().id_token; 
-        console.log("ID Token: " + id_token); 
-      }; 
+        sendBack(idGoogle);
+        //console.log(idGoogle);
+      };
+      function sendBack(idGoogle){
+            var input = "idGoogle=" + idGoogle;
+            var request =  ajax(request);
+            request.onreadystatechange = function() {
+                if (request.status == 200 && request.readyState == 4) {
+                    var respon = JSON.parse(request.responseText);
+                    if(respon.status == 1){
+                        window.location = "https://stromzivota.web.id/admin/index.php";
+                    }
+                    else{
+                        console.log(respon);
+                    }
+                }
+            };
+            request.open("POST", "config/checkGoogle.php", true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.send(input);
+        }
+        
+    
     </script>
 
 </div>
@@ -60,69 +83,26 @@
 <?php
 	$sql = "SELECT product.idProduct, 
 			product.sellingPrice, 
-			dataproduct.name, 
-			sale.startSale
-			sale.finishSale
-			sale.idSale
+			dataproduct.name,
+			dataproduct.picture
 			FROM product
 			INNER JOIN dataproduct
-			ON product.idProduct = dataproduct.idProduct
-			INNER JOIN sale.idProduct = product.idProduct";
-	$query = $mysqli->query($sql);
-	while ($row = $query->fetch_assoc()) {
-	?>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-	<?php
+			ON product.idProduct = dataproduct.idProduct";
+	if ($query = $mysqli->query($sql)) {
+		while ($row = $query->fetch_assoc()) {
+			echo "productPicture/".$row['picture'];
+			?>
+			<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
+				<img src="productPicture/<?php echo $row['picture']; ?>" alt="Norway" style="width: 200px">
+				<div style="padding: 10px;">
+					<b>Pedofil</b><br>
+					Rp 1.000,-
+				</div>
+			</div>
+			<?php
+		}
 	}
 ?>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 0px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
-	<div class="w3-card-12" style="width: 200px; float: left; margin: 0 60px 50px 0;">
-		<img src="picture/sample.jpg" alt="Norway" style="width: 200px">
-		<div style="padding: 10px;">
-		    <b>Pedofil</b><br>
-		    Rp 1.000,-
-		</div>
-	</div>
 </div>
 </body>
 </html>
