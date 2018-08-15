@@ -31,31 +31,31 @@
 
     <div class="w3-modal" style="display: none;" id="contactAdd">
         <form action="contactAdd.php" method="post" style="margin: 30px 500px; background-color: white; padding: 30px;">
-            <button class="cancel w3-btn w3-red" onclick="document.getElementById('contactAdd').style.display='none'">X</button>
+            <button class="cancel w3-btn w3-blue" onclick="document.getElementById('contactAdd').style.display='none'">X</button>
             <center><textarea type="text" name="address" required class="search" placeholder="Masukkan Alamat" style="margin: 0 0 20px;"></textarea><br>
             <input type="text" name="city" required class="search" placeholder="Masukkan Nama Kota" style="margin: 0 0 20px;"><br>
             <input type="text" name="province" required class="search" placeholder="Masukkan Nama Provinsi" style="margin: 0 0 20px;"><br>
             <input type="text" name="postalCode" required class="search" placeholder="Masukkan Kode Pos" style="margin: 0 0 20px;"><br>
-            <input type="submit" value="Submit" name="addSubmit" onclick="addContact()" class="w3-btn w3-red" style="margin-top: 20px;"></center>
+            <input type="submit" value="Submit" name="addSubmit" onclick="addContact()" class="w3-btn w3-blue" style="margin-top: 20px;"></center>
         </form>
     </div>
 
     <div class="w3-modal" style="display: none;" id="contactEdit">
         <form action="contactEdit.php" method="post" style="margin: 30px 500px; background-color: white; padding: 30px;">
-            <button class="cancel w3-btn w3-red" onclick="document.getElementById('contactEdit').style.display='none'">X</button>
+            <button class="cancel w3-btn w3-blue" onclick="document.getElementById('contactEdit').style.display='none'">X</button>
             <center><textarea type="text" name="address" required class="search" placeholder="Masukkan Alamat" style="margin: 0 0 20px;"></textarea><br>
             <input type="text" name="city" required class="search" placeholder="Masukkan Nama Kota" style="margin: 0 0 20px;"><br>
             <input type="text" name="province" required class="search" placeholder="Masukkan Nama Provinsi" style="margin: 0 0 20px;"><br>
             <input type="text" name="postalCode" required class="search" placeholder="Masukkan Kode Pos" style="margin: 0 0 20px;"><br>
-            <input type="submit" value="Submit" name="addSubmit" onclick="editContact()" class="w3-btn w3-red" style="margin-top: 20px;"></center>
+            <input type="submit" value="Submit" name="addSubmit" onclick="editContact()" class="w3-btn w3-blue" style="margin-top: 20px;"></center>
         </form>
     </div>
 
 <div class="isi">
-<button class="w3-btn w3-red" style="margin-bottom: 20px" onclick="document.getElementById('contactAdd').style.display='block'">Tambah Alamat</button>
+<button class="w3-btn w3-blue" style="margin-bottom: 20px" onclick="document.getElementById('contactAdd').style.display='block'">Tambah Alamat</button>
 <center>
     <table class="w3-table">
-        <tr class="w3-red">
+        <tr class="w3-blue">
             <td>Alamat</td>
             <td>Kota</td>
             <td>Provinsi</td>

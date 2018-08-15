@@ -65,7 +65,7 @@
 
 <div class="isi">
     <table class="w3-table w3-bordered" style="margin-bottom: 40px;">
-        <tr class="w3-red">
+        <tr class="w3-blue">
             <td>Produk yang Dipesan</td>
         </tr>
         <tr>
@@ -99,7 +99,7 @@
     </table>
 
     <table class="w3-table w3-bordered" style="margin-bottom: 40px;">
-        <tr class="w3-red">
+        <tr class="w3-blue">
             <td>Jasa Pengiriman</td>
         </tr>
         <tr>
@@ -122,7 +122,7 @@
             ?></select><br>
 
     <p style="margin-top: 40px">Total biaya : </p><br>
-    <button class="w3-btn w3-red" style="margin-top: 10px">Konfirmasi Pesanan</button>
+    <button class="w3-btn w3-blue" style="margin-top: 10px">Konfirmasi Pesanan</button>
 </div>
 
 </body>
