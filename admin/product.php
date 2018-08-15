@@ -23,7 +23,7 @@
 
 <div class="w3-modal" style="display: none;" id="productAdd">
     <form action="productAdd.php" method="post" enctype="multipart/form-data" style="margin: -35px 450px; background-color: white; padding: 30px 0px 30px 60px;">
-        <button class="cancel w3-btn w3-red" onclick="document.getElementById('productAdd').style.display='none'" style="margin: -30px 0px">X</button>
+        <button class="cancel w3-btn w3-blue" onclick="document.getElementById('productAdd').style.display='none'" style="margin: -30px 0px">X</button>
 	    <input type="text" name="name" required class="search" placeholder="Masukkan Nama Produk" style="margin: 0 0 10px 55px;" autofocus><br>
 	    Upload gambar : <input type="file" name="picture" required style="margin: 0 0 10px 0;" accept="image/*"><br>
 	    <input type="text" name="description" required class="search" placeholder="Masukkan Deskripsi Produk" style="margin: 0 0 10px 55px;"><br>
@@ -46,15 +46,15 @@
 	    <input type="number" name="capital" required class="search" placeholder="Harga Modal" style="margin: 10px 0 10px 70px;"><br>
 	    <input type="number" name="sellingPrice" required class="search" placeholder="Harga Jual" style="margin: 0 0 10px 70px;"><br>
 	    <input type="number" name="stock" required class="search" placeholder="Jumlah" style="margin: 0 0 10px 70px;"><br>
-        <input type="submit" value="Submit" name="submit" onclick="document.getElementById('productAdd').style.display='none'" class="w3-btn w3-red" style="margin: 10px 0 0 130px;"></center>
+        <input type="submit" value="Submit" name="submit" onclick="document.getElementById('productAdd').style.display='none'" class="w3-btn w3-blue" style="margin: 10px 0 0 130px;"></center>
     </form>
 </div>
 
 <div class="isi">
-  <button class="w3-btn w3-red" onclick="document.getElementById('productAdd').style.display='block'">Tambah Produk</button>
+  <button class="w3-btn w3-blue" onclick="document.getElementById('productAdd').style.display='block'">Tambah Produk</button>
   <input type="text" name="search" placeholder="Cari produk" class="search" style="margin: 0 0 20px 0; float: right;">
   <table class="w3-table w3-hoverable w3-striped">
-    <tr class="w3-red">
+    <tr class="w3-blue">
       <td>ID Produk</td>
       <td>Nama Produk</td>
       <td>Deskripsi</td>

@@ -65,7 +65,6 @@
         if ($stmt) {
             $stmt->bind_param("isssss", $idProduct, $name, $description, $size, $color, $newImageName);
             if ($stmt->execute()) {
-                echo $_SERVER['DOCUMENT_ROOT']."/productPicture/".$fileName.".".$tmp[$extension];
                 rename($_SERVER['DOCUMENT_ROOT']."/productPicture/".$fileName.".".$tmp[$extension], $_SERVER['DOCUMENT_ROOT']."/productPicture/".$newImageName);
             }
             else{
@@ -86,7 +85,7 @@
             $pass = base64_decode($row['pass']);
             $instagram = new InstagramUpload;
             $instagram->Login($row['userSosmed'], $pass);
-            $instagram->UploadPhoto($_SERVER['DOCUMENT_ROOT']."productPicture/".$newImageName, $description);
+            $instagram->UploadPhoto($_SERVER['DOCUMENT_ROOT']."/productPicture/".$newImageName, $description);
             header("Location: product.php");    
             }
         }

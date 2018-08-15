@@ -3,7 +3,7 @@
 	height: 70px;
 }
 .toko{
-	color: red;
+	color: blue;
 	float: left;
 	margin: 5px 50px;
 }
@@ -30,23 +30,23 @@
 }
 .header button, .menuProfil a button{
 	text-decoration: none;
-	color: red;
+	color: blue;
 	background-color: white;
 	border: none;
 }
 .header a{
 	text-decoration: none;
 	width: 100%;
-	color: red;
+	color: blue;
 }
 .header button:hover, .header a:hover, .menuProfil a button:hover{
 	transition: 0.5s;
-	background-color:red;
+	background-color:blue;
 	color:white;
 }
 .search{
 	margin: -5px 30px 0 0;
-	border: 1px solid red;
+	border: 1px solid blue;
 	border-radius: 10px;
 	padding: 5px 15px;
 }

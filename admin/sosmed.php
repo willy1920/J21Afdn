@@ -26,9 +26,9 @@
 
 <div class="w3-modal" style="display: none;" id="sosmedAdd">
     <form action="sosmedAdd.php" method="post" style="margin: 50px 500px; background-color: white; padding: 30px;">
-        <center><input type="text" name="addUser" required class="search" placeholder="Masukkan Username" style="margin: 0 0 20px;" autofocus><br>
-        <input type="password" name="addPass" id="addPass1" required class="search" placeholder="Masukkan Password" style="margin: 0 0 20px;" oninput="confirmAddPass()"><br>
-        <input type="password" id="addPass2" required class="search" placeholder="Konfirmasi Password" style="margin: 0 0 20px;" oninput="confirmAddPass()">
+        <center><input type="text" name="addUser" requiblue class="search" placeholder="Masukkan Username" style="margin: 0 0 20px;" autofocus><br>
+        <input type="password" name="addPass" id="addPass1" requiblue class="search" placeholder="Masukkan Password" style="margin: 0 0 20px;" oninput="confirmAddPass()"><br>
+        <input type="password" id="addPass2" requiblue class="search" placeholder="Konfirmasi Password" style="margin: 0 0 20px;" oninput="confirmAddPass()">
         <label id="labelAddPass"></label>
         <br>
         <select name="addType">
@@ -36,7 +36,7 @@
             <option value="Instagram">Instagram</option>
             <option value="Google+">Google+ </option>
         </select>
-        <input type="submit" value="Submit" name="addSubmit" onclick="document.getElementById('sosmedAdd').style.display='none'" class="w3-btn w3-red" style="margin-top: 20px;"></center>
+        <input type="submit" value="Submit" name="addSubmit" onclick="document.getElementById('sosmedAdd').style.display='none'" class="w3-btn w3-blue" style="margin-top: 20px;"></center>
     </form>
 </div>
 
@@ -44,23 +44,23 @@
     <form action="sosmedEdit.php" method="post" style="margin: 50px 500px; background-color: white; padding: 30px;">
         <center><label id="labelEditUser"></label><br>
         <input type="hidden" name="editIdSosmed" id="editIdSosmed">
-        <input type="password" id="editOldPass" required class="search" placeholder="Masukkan Password Lama" style="margin: 0 0 20px;" onchange="checkPass()">
+        <input type="password" id="editOldPass" requiblue class="search" placeholder="Masukkan Password Lama" style="margin: 0 0 20px;" onchange="checkPass()">
         <label id="labelEditOldPass"></label>
         <br>
-        <input type="password" name="editPassSosmed" id="editPass1" required class="search" placeholder="Masukkan Password Baru" style="margin: 0 0 20px;" oninput="confirmEditPass()"><br>
-        <input type="password" id="editPass2" required class="search" placeholder="Konfirmasi Password" style="margin: 0 0 0px;" oninput="confirmEditPass()">
+        <input type="password" name="editPassSosmed" id="editPass1" requiblue class="search" placeholder="Masukkan Password Baru" style="margin: 0 0 20px;" oninput="confirmEditPass()"><br>
+        <input type="password" id="editPass2" requiblue class="search" placeholder="Konfirmasi Password" style="margin: 0 0 0px;" oninput="confirmEditPass()">
         <label id="labelEditPass"></label>
         <br>
-        <input type="hidden" name="editTypeSosmed" required class="search" placeholder="Jenis Akun" style="margin: 0 0 0px;"><br>
-        <input type="submit" value="Submit" disabled id="editSubmit" name="editSubmit" onclick="document.getElementById('sosmedEdit').style.display='none'" class="w3-btn w3-red" style="margin: 0 0 20px 0;"></center>
+        <input type="hidden" name="editTypeSosmed" requiblue class="search" placeholder="Jenis Akun" style="margin: 0 0 0px;"><br>
+        <input type="submit" value="Submit" disabled id="editSubmit" name="editSubmit" onclick="document.getElementById('sosmedEdit').style.display='none'" class="w3-btn w3-blue" style="margin: 0 0 20px 0;"></center>
     </form>
 </div>
 
 <div class="isi" style="margin: 0 200px;">
-  <button class="w3-btn w3-red" onclick="document.getElementById('sosmedAdd').style.display='block'">Tambah Akun</button>
+  <button class="w3-btn w3-blue" onclick="document.getElementById('sosmedAdd').style.display='block'">Tambah Akun</button>
   <input type="text" name="search" placeholder="Cari akun" class="search" style="margin: 0 0 20px 0; float: right;">
   <table class="w3-table w3-hoverable w3-striped">
-    <tr class="w3-red">
+    <tr class="w3-blue">
       <td>ID</td>
       <td>Jenis</td>
       <td colspan="2"><center>Option</center></td>

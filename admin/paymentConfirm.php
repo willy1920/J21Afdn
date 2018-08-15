@@ -26,8 +26,8 @@
 ?>
 
     <div class="isi" style="margin: 0 200px;">
-        <table class="w3-table w3-centered w3-striped" style="width: 800px; margin-top: 20px;">
-            <tr class="w3-red">
+        <table class="w3-table w3-centeblue w3-striped" style="width: 800px; margin-top: 20px;">
+            <tr class="w3-blue">
                 <th>No. Transaksi</th>
                 <th>No. Resi</th>
                 <th>Status</th>

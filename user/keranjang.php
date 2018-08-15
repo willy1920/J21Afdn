@@ -1,5 +1,6 @@
 <?php
-	include "../config/config.php";
+    include "../config/config.php";
+    include "../config/sessionUser.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +28,39 @@
 
 <?php
     include 'header.php';
+
+    $id = $_SESSION['id'];
+
+    $sql = "SELECT product.idProduct,
+            product.sellingPrice,
+            dataproduct.name,
+            dataproduct.picture,
+            trolli.stock
+            FROM trolli
+            INNER JOIN product
+            ON troll.idProduct = product.idProduct
+            INNER JOIN dataproduct
+            ON trolli.idProduct = dataproduct.idProduct
+            WHERE trolli.idAccount=?";
+    if ($stmt = $mysqli->prepare($sql)) {
+        $stmt->bind_param("s", $id);
+        if ($stmt->execute()) {
+            $stmt->bind_result($idProduct, $sellingPrice, $name, $picture, $stock);
+            while ($stmt->fetch()) {
+                echo $idProduct."<br>";
+                echo $sellingPrice."<br>";
+                echo $name."<br>";
+                echo $picture."<br>";
+                echo $stock."<br>";
+            }
+        }
+        else{
+            echo "Execute failed";
+        }
+    }
+    else{
+        echo "Prepare failed";
+    }
 ?>
 
 <div class="isi">

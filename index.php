@@ -1,5 +1,5 @@
 <?php
-    include "config/session.php";
+    include "config/sessionUser.php";
 	include "config/config.php";
 ?>
 <!DOCTYPE html>
@@ -13,31 +13,20 @@
     <link rel="stylesheet" type="text/css" href="style/css.css">
 	<script src="js/ajax.js"></script>
 	<script src="js/login.js"></script>
+    <script>
+        function menuProfilIn(){
+            document.getElementById('menuProfil').classList.add('in');
+            document.getElementById('menuProfil').classList.remove('out');
+        }
+        function menuProfilOut(){
+            document.getElementById('menuProfil').classList.remove('in');
+            document.getElementById('menuProfil').classList.add('out');
+        }
+    </script>
 </head>
 <body>
 
-<div class="header w3-card-4">
-	<p class="toko"><i>Nama Toko</i></p>
-	<input type="text" name="search" placeholder="Cari produk" class="search">
-	<a href=""><button href="">Home</button></a>
-	<div class="w3-dropdown-hover">
-      <button>Kategori</button>
-      <div class="w3-dropdown-content w3-card-4" style="width: 200px; transition: 0.5s;">
-      	<?php
-			$sql = "SELECT * FROM category";
-			$query = $mysqli->query($sql);
-			while ($row = $query->fetch_assoc()) {
-				if($row['idCategory'] != 1){
-		?>		
-				<a href="#" style="width: 100%"><?php echo ucfirst($row['name']); ?></a>
-		<?php
-				}
-			}
-		?>
-      </div>
-    </div>
-	
-	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="float: right;"></div> 
+<?php include "header.php"; ?>
     <script>
         
       function onSignIn(googleUser) {
@@ -50,20 +39,23 @@
         //console.log('Family Name: ' + profile.getFamilyName()); 
         //console.log("Image URL: " + profile.getImageUrl()); 
         //console.log("Email: " + profile.getEmail());
+        var picture = profile.getImageUrl();
+        document.getElementById("signInGoogle").style.display = "none";
+        document.getElementById("profilePicture").src = picture;
 
         // The ID token you need to pass to your backend: 
-        sendBack(idGoogle);
+        sendBack(idGoogle, picture);
         //console.log(idGoogle);
       };
-      function sendBack(idGoogle){
-            var input = "idGoogle=" + idGoogle;
+      function sendBack(idGoogle, picture){
+            var input = "idGoogle=" + idGoogle + "&picture=" + picture;
             var request =  ajax(request);
             request.onreadystatechange = function() {
                 if (request.status == 200 && request.readyState == 4) {
                     var respon = request.responseText;
                     console.log(respon);
                     
-                    //var json = JSON.parse(respon);
+                    var json = JSON.parse(respon);
                     if(json.status == 1){
                         window.location = "https://stromzivota.web.id/admin/index.php";
                     }
@@ -80,8 +72,6 @@
     
     </script>
 
-</div>
-
 <div class="isi">
 <?php
 	$sql = "SELECT product.idProduct, 
@@ -94,7 +84,6 @@
 	if ($query = $mysqli->query($sql)) {
 		while ($row = $query->fetch_assoc()) {
 			?>
-<<<<<<< HEAD
 			<a href="detailProduct.php?idProduct=<?php echo $row['idProduct']; ?>">
                 <div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
                     <img src="productPicture/<?php echo $row['picture']; ?>" alt="Norway" style="width: 200px">
@@ -104,15 +93,6 @@
                     </div>
                 </div>
             </a>
-=======
-			<div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-				<img src="productPicture/<?php echo $row['picture']; ?>" alt="Norway" style="width: 200px">
-				<div style="padding: 10px;">
-					<b>Pedofil</b><br>
-					Rp 1.000,-
-				</div>
-			</div>
->>>>>>> 8e3e2bfbaa73f7259bcc2b618e931af9dfe8d429
 			<?php
 		}
 	}
