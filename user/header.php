@@ -18,6 +18,7 @@
 		?>
       </div>
     </div>
+	<div id="signInGoogle" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="float: right;"></div> 
 	<img id="profilePicture" class="profil" onmouseover="menuProfilIn()" onmouseout="menuProfilOut()">
 </div>
 		<div class="menuProfil w3-card-4 out" id="menuProfil" onmouseover="menuProfilIn()" onmouseout="menuProfilOut()">
