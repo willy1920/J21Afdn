@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 16, 2018 at 11:19 AM
+-- Generation Time: Aug 16, 2018 at 03:05 PM
 -- Server version: 10.3.8-MariaDB-log
 -- PHP Version: 7.2.8
 
@@ -71,6 +71,29 @@ INSERT INTO `category` (`idCategory`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `confirmation`
+--
+
+CREATE TABLE `confirmation` (
+  `idConfirmation` int(10) UNSIGNED NOT NULL,
+  `idNota` int(10) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `bank` char(20) NOT NULL,
+  `numberAccount` char(30) NOT NULL,
+  `accountOwner` char(50) NOT NULL,
+  `picture` char(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `confirmation`
+--
+
+INSERT INTO `confirmation` (`idConfirmation`, `idNota`, `date`, `bank`, `numberAccount`, `accountOwner`, `picture`) VALUES
+(2, 12, '2018-08-16', 'abc', '123', 'aaa', '244c6c370fd1859325f7119e96a81584e.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `contact`
 --
 
@@ -124,7 +147,8 @@ INSERT INTO `dataproduct` (`idProduct`, `name`, `description`, `size`, `color`, 
 --
 
 CREATE TABLE `nonota` (
-  `idNota` int(11) UNSIGNED NOT NULL,
+  `idNota` int(10) UNSIGNED NOT NULL,
+  `idAccount` varchar(50) NOT NULL,
   `tanggal` date NOT NULL,
   `service` char(10) NOT NULL,
   `ongkir` mediumint(11) UNSIGNED NOT NULL,
@@ -135,17 +159,19 @@ CREATE TABLE `nonota` (
 -- Dumping data for table `nonota`
 --
 
-INSERT INTO `nonota` (`idNota`, `tanggal`, `service`, `ongkir`, `status`) VALUES
-(1, '2018-08-16', '', 0, 0),
-(2, '2018-08-16', 'Array', 49000, 0),
-(3, '2018-08-16', 'OKE', 49000, 0),
-(4, '2018-08-16', 'OKE', 49000, 0),
-(5, '2018-08-16', 'OKE', 49000, 0),
-(6, '2018-08-16', 'OKE', 49000, 0),
-(7, '2018-08-16', 'OKE', 49000, 0),
-(8, '2018-08-16', 'OKE', 49000, 0),
-(9, '2018-08-16', 'OKE', 49000, 0),
-(10, '2018-08-16', 'OKE', 49000, 0);
+INSERT INTO `nonota` (`idNota`, `idAccount`, `tanggal`, `service`, `ongkir`, `status`) VALUES
+(1, '', '2018-08-16', '', 0, 0),
+(2, '', '2018-08-16', 'Array', 49000, 0),
+(3, '', '2018-08-16', 'OKE', 49000, 0),
+(4, '', '2018-08-16', 'OKE', 49000, 0),
+(5, '', '2018-08-16', 'OKE', 49000, 0),
+(6, '', '2018-08-16', 'OKE', 49000, 0),
+(7, '', '2018-08-16', 'OKE', 49000, 0),
+(8, '', '2018-08-16', 'OKE', 49000, 0),
+(9, '', '2018-08-16', 'OKE', 49000, 0),
+(10, '', '2018-08-16', 'OKE', 49000, 0),
+(11, '', '2018-08-16', 'OKE', 49000, 0),
+(12, 'willychai04@gmail.com', '2018-08-16', 'OKE', 49000, 0);
 
 -- --------------------------------------------------------
 
@@ -157,32 +183,37 @@ CREATE TABLE `orderr` (
   `idOrder` int(11) UNSIGNED NOT NULL,
   `idProduct` smallint(5) UNSIGNED NOT NULL,
   `idNota` int(11) UNSIGNED NOT NULL,
-  `total` tinyint(3) UNSIGNED NOT NULL
+  `total` tinyint(3) UNSIGNED NOT NULL,
+  `message` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orderr`
 --
 
-INSERT INTO `orderr` (`idOrder`, `idProduct`, `idNota`, `total`) VALUES
-(1, 5, 1, 1),
-(2, 5, 1, 1),
-(3, 7, 2, 1),
-(4, 5, 2, 1),
-(5, 7, 3, 1),
-(6, 5, 3, 1),
-(7, 7, 4, 1),
-(8, 5, 4, 1),
-(9, 7, 5, 1),
-(10, 5, 5, 1),
-(11, 7, 6, 1),
-(12, 5, 6, 1),
-(13, 7, 7, 1),
-(14, 5, 7, 1),
-(15, 7, 8, 1),
-(16, 5, 8, 1),
-(17, 7, 9, 1),
-(18, 5, 9, 1);
+INSERT INTO `orderr` (`idOrder`, `idProduct`, `idNota`, `total`, `message`) VALUES
+(1, 5, 1, 1, ''),
+(2, 5, 1, 1, ''),
+(3, 7, 2, 1, ''),
+(4, 5, 2, 1, ''),
+(5, 7, 3, 1, ''),
+(6, 5, 3, 1, ''),
+(7, 7, 4, 1, ''),
+(8, 5, 4, 1, ''),
+(9, 7, 5, 1, ''),
+(10, 5, 5, 1, ''),
+(11, 7, 6, 1, ''),
+(12, 5, 6, 1, ''),
+(13, 7, 7, 1, ''),
+(14, 5, 7, 1, ''),
+(15, 7, 8, 1, ''),
+(16, 5, 8, 1, ''),
+(17, 7, 9, 1, ''),
+(18, 5, 9, 1, ''),
+(19, 5, 11, 1, ''),
+(20, 8, 11, 1, ''),
+(21, 4, 12, 1, ''),
+(22, 7, 12, 1, '');
 
 -- --------------------------------------------------------
 
@@ -231,34 +262,6 @@ CREATE TABLE `profile` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sale`
---
-
-CREATE TABLE `sale` (
-  `idSale` smallint(5) UNSIGNED NOT NULL,
-  `idProduct` smallint(5) UNSIGNED NOT NULL,
-  `discount` mediumint(8) UNSIGNED NOT NULL,
-  `startSale` datetime NOT NULL,
-  `finishSale` datetime NOT NULL,
-  `stock` smallint(5) NOT NULL,
-  `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `shippingcompany`
---
-
-CREATE TABLE `shippingcompany` (
-  `idCompany` char(5) NOT NULL,
-  `name` char(30) NOT NULL,
-  `service` char(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `sosmed`
 --
 
@@ -301,8 +304,18 @@ CREATE TABLE `trolli` (
   `idTrolli` int(11) NOT NULL,
   `idAccount` varchar(50) NOT NULL,
   `idProduct` smallint(5) NOT NULL,
-  `total` smallint(5) NOT NULL
+  `total` smallint(5) NOT NULL,
+  `message` tinytext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `trolli`
+--
+
+INSERT INTO `trolli` (`idTrolli`, `idAccount`, `idProduct`, `total`, `message`) VALUES
+(9, 'willychai04@gmail.com', 6, 1, ''),
+(10, 'willychai04@gmail.com', 4, 1, ''),
+(11, 'willychai04@gmail.com', 4, 1, '');
 
 --
 -- Indexes for dumped tables
@@ -319,6 +332,12 @@ ALTER TABLE `account`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`idCategory`);
+
+--
+-- Indexes for table `confirmation`
+--
+ALTER TABLE `confirmation`
+  ADD PRIMARY KEY (`idConfirmation`);
 
 --
 -- Indexes for table `contact`
@@ -361,19 +380,6 @@ ALTER TABLE `profile`
   ADD PRIMARY KEY (`name`);
 
 --
--- Indexes for table `sale`
---
-ALTER TABLE `sale`
-  ADD PRIMARY KEY (`idSale`),
-  ADD KEY `idProduct` (`idProduct`);
-
---
--- Indexes for table `shippingcompany`
---
-ALTER TABLE `shippingcompany`
-  ADD PRIMARY KEY (`idCompany`);
-
---
 -- Indexes for table `sosmed`
 --
 ALTER TABLE `sosmed`
@@ -402,6 +408,12 @@ ALTER TABLE `category`
   MODIFY `idCategory` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `confirmation`
+--
+ALTER TABLE `confirmation`
+  MODIFY `idConfirmation` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
@@ -411,25 +423,19 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `nonota`
 --
 ALTER TABLE `nonota`
-  MODIFY `idNota` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idNota` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `orderr`
 --
 ALTER TABLE `orderr`
-  MODIFY `idOrder` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idOrder` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `idProduct` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `sale`
---
-ALTER TABLE `sale`
-  MODIFY `idSale` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sosmed`
@@ -447,7 +453,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `trolli`
 --
 ALTER TABLE `trolli`
-  MODIFY `idTrolli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idTrolli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -470,12 +476,6 @@ ALTER TABLE `dataproduct`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`idCategory`) REFERENCES `category` (`idCategory`);
-
---
--- Constraints for table `sale`
---
-ALTER TABLE `sale`
-  ADD CONSTRAINT `sale_ibfk_1` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

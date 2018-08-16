@@ -137,11 +137,11 @@ function addOrder() {
             
             json = JSON.parse(respon);
             if (json['status'] == 1) {
-                window.location = "konfirmasiPesanan.php";
+                window.location = "confirmation.php";
             }
             else if(json['status'] == 2){
                 alert(json['message']);
-                window.location = "konfirmasiPesanan.php";
+                window.location = "confirmation.php";
             }
             else{
                 alert(json['message']);

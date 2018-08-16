@@ -33,7 +33,7 @@
             }
         }
         else{
-            $json .= '"message":"'.$stmt->error.'"';
+            $json .= '"message":"'.$mysqli->error.'"';
         }
 
         $tmpIdProduk = array();
@@ -66,7 +66,7 @@
             }
         }
         else{
-            $json .= ',"message":"'.$stmt->error.'"';
+            $json .= ',"message":"'.$mysqli->error.'"';
         }
 
         $stmt->close();
@@ -86,9 +86,28 @@
                 $stmt->close();
             }
             else{
-                $json .= ',"message":"'.$stmt->error.'"';
+                $json .= ',"message":"'.$mysqli->error.'"';
             }
         }
+
+        //minus stock
+        $sql = "UPDATE product SET stock=stock-? WHERE idProduct=?";
+        for ($i=0; $i < count($tmpIdProduk); $i++) { 
+            if ($stmt = $mysqli->prepare($sql)) {
+                $stmt->bind_param("ii", $tmpTotal[$i], $tmpIdProduk[$i]);
+                if ($stmt->execute()) {
+                    
+                }
+                else{
+                    $json .= ',"message":"'.$stmt->error.'"';
+                }
+                $stmt->close();
+            }
+            else{
+                $json .= ',"message":"'.$mysqli->error.'"';
+            }
+        }
+        
         
         //delete trolli data
         $sql = "DELETE FROM trolli WHERE idAccount=?";
@@ -103,7 +122,7 @@
             $stmt->close();
         }
         else{
-            $json .= ',"message":"'.$stmt->error.'"';
+            $json .= ',"message":"'.$mysqli->error.'"';
         }
         $json .= ',"nota":"'.$idNota.'"';
         $json .= '}';

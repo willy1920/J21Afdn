@@ -1,7 +1,7 @@
-function categoryDelete(id, name) {
-    var ask = confirm("Apakah anda yakin menghapus " + name);
+function updateNota(idNota) {
+    let ask, request, input;
+    ask = confirm("Apakah anda yakin menerima nota " + idNota);
     if (ask) {
-        let request, input;
         input = 'id=' + id;
         request =  ajax(request);
         request.onreadystatechange = function() {
@@ -16,19 +16,8 @@ function categoryDelete(id, name) {
                 }
             }
         }
-        request.open("POST", "categoryDelete.php", true);
+        request.open("POST", "notaUpdate.php", true);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         request.send(input);
     }
-}
-
-function editDashboard(id, name){
-    document.getElementById('categoryEdit').style.display='block';
-    document.getElementById('editId').value = id;
-    document.getElementById('editName').value = name;
-}
-
-function addCategory() {
-    document.getElementById('categoryAdd').style.display='none';
-    document.getElementById('addCategoryName').autofocus;
 }
