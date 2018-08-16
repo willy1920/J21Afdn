@@ -33,8 +33,14 @@
 
 <div class="isi">
 <?php
+    $isi;
     $totalPrice = 0;
     $id = $_SESSION['id'];
+    //cek banyaknya trolli pengguna
+    $sql = "SELECT idTrolli FROM trolli WHERE idAccount='$id' ORDER BY idTrolli";
+    $query = $mysqli->query($sql);
+    $isi = $query->num_rows;
+
     $sql = "SELECT product.idProduct,
             product.sellingPrice,
             dataproduct.name,
@@ -81,6 +87,7 @@
             </table>
             <input type="hidden" id="totalItem" value="<?php echo $i; ?>">
             <?php
+            
         }
         else{
             echo "Execute failed";
@@ -89,19 +96,22 @@
     else{
         echo "Prepare failed";
     }
+    if($isi > 0){
 ?>
     Pilih alamat : <select name="address" id="address" onchange="changeDestination()">
-            <?php
-            $sql = "SELECT idContact, Address, idCity FROM contact";
-            $query = $mysqli->query($sql);
-            while($row = $query->fetch_assoc()){
-                ?>
-                <option value="<?php echo $row['idCity']; ?>"><?php echo $row['Address']; ?></option>
-                <?php
-            }
-            ?></select><br>
+    <?php
+    $sql = "SELECT idContact, Address, idCity FROM contact";
+    $query = $mysqli->query($sql);
+    while($row = $query->fetch_assoc()){
+        ?>
+        <option value="<?php echo $row['idContact']." ".$row['idCity']; ?>"><?php echo $row['Address']; ?></option>
+        <?php
+    }
+    ?></select><br>
     <script>
-        getCost(document.getElementById('address').value);
+        var a = document.getElementById('address').value;
+        var b = a.split(" ");
+        getCost(b[1]);
     </script>
     <table class="w3-table w3-bordered" style="margin-bottom: 40px;">
         <tr class="w3-red">
@@ -110,17 +120,20 @@
         <tr>
             <td style="padding: 20px;">
                 <p style="margin: -5px 0">Nama Perusahaan : JNE</p><br>
-                <p style="margin: -5px 0">Jenis Service : <select name="service" id="service"></select></p><br><br>
+                <p style="margin: -5px 0">Jenis Service : <select name="service" id="service" onchange="changeService()"></select></p><br>
+                <p><input type="hidden" name="servicePrice" id="servicePrice"></p><br>
             </td>
         </tr>
     </table>
 
         
-
+    <input type="hidden" id="hiddenTotalPrice" value="<?php echo $totalPrice; ?>">
     <p style="margin-top: 40px">Total biaya : <p id="totalPrice"><?php echo $totalPrice; ?></p></p><br>
-    <button class="w3-btn w3-red" style="margin-top: 10px">Konfirmasi Pesanan</button>
+    <button class="w3-btn w3-red" style="margin-top: 10px" onclick="addOrder()">Konfirmasi Pesanan</button>
 </div>
-
+<?php
+    }
+?>
 </body>
 </html>
 <?php

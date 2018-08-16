@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 15, 2018 at 07:34 AM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Host: localhost:3306
+-- Generation Time: Aug 16, 2018 at 11:19 AM
+-- Server version: 10.3.8-MariaDB-log
+-- PHP Version: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -83,6 +83,13 @@ CREATE TABLE `contact` (
   `Address` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`idContact`, `idAccount`, `idCity`, `idProvince`, `postalCode`, `Address`) VALUES
+(6, 'willychai04@gmail.com', 27, 2, 78111, 'Jl. Merdeka');
+
 -- --------------------------------------------------------
 
 --
@@ -113,17 +120,69 @@ INSERT INTO `dataproduct` (`idProduct`, `name`, `description`, `size`, `color`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detailtransaction`
+-- Table structure for table `nonota`
 --
 
-CREATE TABLE `detailtransaction` (
-  `idDetailTransaction` int(11) UNSIGNED NOT NULL,
-  `idTransaction` int(11) UNSIGNED NOT NULL,
-  `address` text NOT NULL,
-  `zipCode` char(6) NOT NULL,
-  `city` char(30) NOT NULL,
-  `province` char(50) NOT NULL
+CREATE TABLE `nonota` (
+  `idNota` int(11) UNSIGNED NOT NULL,
+  `tanggal` date NOT NULL,
+  `service` char(10) NOT NULL,
+  `ongkir` mediumint(11) UNSIGNED NOT NULL,
+  `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nonota`
+--
+
+INSERT INTO `nonota` (`idNota`, `tanggal`, `service`, `ongkir`, `status`) VALUES
+(1, '2018-08-16', '', 0, 0),
+(2, '2018-08-16', 'Array', 49000, 0),
+(3, '2018-08-16', 'OKE', 49000, 0),
+(4, '2018-08-16', 'OKE', 49000, 0),
+(5, '2018-08-16', 'OKE', 49000, 0),
+(6, '2018-08-16', 'OKE', 49000, 0),
+(7, '2018-08-16', 'OKE', 49000, 0),
+(8, '2018-08-16', 'OKE', 49000, 0),
+(9, '2018-08-16', 'OKE', 49000, 0),
+(10, '2018-08-16', 'OKE', 49000, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orderr`
+--
+
+CREATE TABLE `orderr` (
+  `idOrder` int(11) UNSIGNED NOT NULL,
+  `idProduct` smallint(5) UNSIGNED NOT NULL,
+  `idNota` int(11) UNSIGNED NOT NULL,
+  `total` tinyint(3) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orderr`
+--
+
+INSERT INTO `orderr` (`idOrder`, `idProduct`, `idNota`, `total`) VALUES
+(1, 5, 1, 1),
+(2, 5, 1, 1),
+(3, 7, 2, 1),
+(4, 5, 2, 1),
+(5, 7, 3, 1),
+(6, 5, 3, 1),
+(7, 7, 4, 1),
+(8, 5, 4, 1),
+(9, 7, 5, 1),
+(10, 5, 5, 1),
+(11, 7, 6, 1),
+(12, 5, 6, 1),
+(13, 7, 7, 1),
+(14, 5, 7, 1),
+(15, 7, 8, 1),
+(16, 5, 8, 1),
+(17, 7, 9, 1),
+(18, 5, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -172,6 +231,34 @@ CREATE TABLE `profile` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sale`
+--
+
+CREATE TABLE `sale` (
+  `idSale` smallint(5) UNSIGNED NOT NULL,
+  `idProduct` smallint(5) UNSIGNED NOT NULL,
+  `discount` mediumint(8) UNSIGNED NOT NULL,
+  `startSale` datetime NOT NULL,
+  `finishSale` datetime NOT NULL,
+  `stock` smallint(5) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shippingcompany`
+--
+
+CREATE TABLE `shippingcompany` (
+  `idCompany` char(5) NOT NULL,
+  `name` char(30) NOT NULL,
+  `service` char(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sosmed`
 --
 
@@ -196,13 +283,12 @@ INSERT INTO `sosmed` (`idSosmed`, `userSosmed`, `pass`, `type`) VALUES
 --
 
 CREATE TABLE `transaction` (
-  `idTransaction` int(11) UNSIGNED NOT NULL,
+  `idTransaction` int(11) NOT NULL,
   `idAccount` varchar(50) NOT NULL,
   `productName` char(100) NOT NULL,
   `total` tinyint(3) NOT NULL,
   `capital` mediumint(8) NOT NULL,
-  `sellingPrice` mediumint(8) NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `sellingPrice` mediumint(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -217,14 +303,6 @@ CREATE TABLE `trolli` (
   `idProduct` smallint(5) NOT NULL,
   `total` smallint(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `trolli`
---
-
-INSERT INTO `trolli` (`idTrolli`, `idAccount`, `idProduct`, `total`) VALUES
-(1, 'willychai04@gmail.com', 7, 1),
-(2, 'willychai04@gmail.com', 5, 1);
 
 --
 -- Indexes for dumped tables
@@ -258,11 +336,16 @@ ALTER TABLE `dataproduct`
   ADD PRIMARY KEY (`idProduct`);
 
 --
--- Indexes for table `detailtransaction`
+-- Indexes for table `nonota`
 --
-ALTER TABLE `detailtransaction`
-  ADD PRIMARY KEY (`idDetailTransaction`),
-  ADD KEY `idTransaction` (`idTransaction`);
+ALTER TABLE `nonota`
+  ADD PRIMARY KEY (`idNota`);
+
+--
+-- Indexes for table `orderr`
+--
+ALTER TABLE `orderr`
+  ADD PRIMARY KEY (`idOrder`);
 
 --
 -- Indexes for table `product`
@@ -278,6 +361,19 @@ ALTER TABLE `profile`
   ADD PRIMARY KEY (`name`);
 
 --
+-- Indexes for table `sale`
+--
+ALTER TABLE `sale`
+  ADD PRIMARY KEY (`idSale`),
+  ADD KEY `idProduct` (`idProduct`);
+
+--
+-- Indexes for table `shippingcompany`
+--
+ALTER TABLE `shippingcompany`
+  ADD PRIMARY KEY (`idCompany`);
+
+--
 -- Indexes for table `sosmed`
 --
 ALTER TABLE `sosmed`
@@ -287,15 +383,13 @@ ALTER TABLE `sosmed`
 -- Indexes for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`idTransaction`),
-  ADD KEY `idAccount` (`idAccount`);
+  ADD PRIMARY KEY (`idTransaction`);
 
 --
 -- Indexes for table `trolli`
 --
 ALTER TABLE `trolli`
-  ADD PRIMARY KEY (`idTrolli`),
-  ADD KEY `idAccount` (`idAccount`);
+  ADD PRIMARY KEY (`idTrolli`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -311,19 +405,31 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `idContact` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idContact` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `detailtransaction`
+-- AUTO_INCREMENT for table `nonota`
 --
-ALTER TABLE `detailtransaction`
-  MODIFY `idDetailTransaction` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `nonota`
+  MODIFY `idNota` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `orderr`
+--
+ALTER TABLE `orderr`
+  MODIFY `idOrder` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `idProduct` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `sale`
+--
+ALTER TABLE `sale`
+  MODIFY `idSale` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sosmed`
@@ -335,13 +441,13 @@ ALTER TABLE `sosmed`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `idTransaction` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idTransaction` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `trolli`
 --
 ALTER TABLE `trolli`
-  MODIFY `idTrolli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idTrolli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -360,28 +466,16 @@ ALTER TABLE `dataproduct`
   ADD CONSTRAINT `dataproduct_ibfk_1` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`);
 
 --
--- Constraints for table `detailtransaction`
---
-ALTER TABLE `detailtransaction`
-  ADD CONSTRAINT `detailtransaction_ibfk_1` FOREIGN KEY (`idTransaction`) REFERENCES `transaction` (`idTransaction`);
-
---
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`idCategory`) REFERENCES `category` (`idCategory`);
 
 --
--- Constraints for table `transaction`
+-- Constraints for table `sale`
 --
-ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`idAccount`) REFERENCES `account` (`idEmail`);
-
---
--- Constraints for table `trolli`
---
-ALTER TABLE `trolli`
-  ADD CONSTRAINT `trolli_ibfk_1` FOREIGN KEY (`idAccount`) REFERENCES `account` (`idEmail`);
+ALTER TABLE `sale`
+  ADD CONSTRAINT `sale_ibfk_1` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

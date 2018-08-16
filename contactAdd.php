@@ -8,13 +8,14 @@
         $city = $_POST['addCity'];
         $postal = htmlspecialchars($_POST['addPostalCode']);
         $id = $_SESSION['id'];
-        $sql = "INSERT INTO contact (idAccount, idCity, idProvince, postalCode, Address)
+        
+        $sql = "INSERT INTO contact(idAccount, idCity, idProvince, postalCode, Address)
                 VALUES('$id', '$city', '$province', '$postal', '$address')";
         if ($query = $mysqli->query($sql)) {
             header("kontak.php");
         }
         else{
-            echo "query failed";
+            echo "query failed". $mysqli->error;
         }
     }
     

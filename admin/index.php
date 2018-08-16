@@ -27,7 +27,7 @@
 <?php
     include 'menu.php';
 ?>
-
+/
 <div class="isi">
 <canvas id="myChart" width="400" height="400"></canvas>
 <script>
