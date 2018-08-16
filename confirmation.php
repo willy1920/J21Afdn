@@ -99,7 +99,12 @@
 				<td><?php echo $bank; ?></td>
 				<td><?php echo $numberAccount; ?></td>
 				<td><?php echo $accountOwner; ?></td>
-				<td><?php echo $status; ?></td>
+				<td><?php if ($sqlStatus == 1) {
+					echo "Konfirmasi selesai";
+				}
+				else{
+					echo "Admin belum mengkonfirmasi pesanan";
+				} ?></td>
 			</tr>
 		</table>
 <?php
