@@ -1,6 +1,6 @@
 <?php
-    include "config/config.php";
-    include "config/sessionUser.php";
+    include "../config/config.php";
+    include "../config/sessionUser.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,7 @@
     </script>
 </head>
 <body>
-<?php include "user/header.php"; ?>
+<?php include "header.php"; ?>
 <div class="isi">
 <?php
     $tmpName;

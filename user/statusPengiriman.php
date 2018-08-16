@@ -32,7 +32,7 @@
 <div class="isi">
 <center>
     <table class="w3-table w3-centered" style="width: 800px; margin-top: 20px;">
-        <tr class="w3-red">
+        <tr class="w3-blue">
             <th>No. Transaksi</th>
             <th>No. Resi</th>
             <th>Status</th>

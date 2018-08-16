@@ -1,6 +1,6 @@
 <?php
-    include "config/config.php";
-    include "config/session.php";
+    include "../config/config.php";
+    include "../config/session.php";
 
     $idProduct = $_POST['idProduct'];
     $idAccount = $_POST['idAccount'];

@@ -35,7 +35,7 @@
     <input type="number" name="amountPayment" placeholder="Jumlah Pembayaran" class="search" style="width: 400px; margin-bottom: 40px;"><br>
     Upload bukti pembayaran : <input type="file" name="picturePayment" style="margin-bottom: 40px;"><br>
     <p style="margin: -10px 0 -20px -355px">No. Transaksi : </p><br>
-    <button class="w3-btn w3-red" style="margin: 40px 0 0 -27px">Bayar</button
+    <button class="w3-btn w3-blue" style="margin: 40px 0 0 -27px">Bayar</button
 </div>
 
 </body>
