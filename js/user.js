@@ -133,8 +133,14 @@ function addOrder() {
     request.onreadystatechange = function() {
         if (request.status == 200 && request.readyState == 4) {
             respon = request.responseText;
+            console.log(respon);
+            
             json = JSON.parse(respon);
             if (json['status'] == 1) {
+                window.location = "konfirmasiPesanan.php";
+            }
+            else if(json['status'] == 2){
+                alert(json['message']);
                 window.location = "konfirmasiPesanan.php";
             }
             else{
