@@ -2,7 +2,6 @@
     include "config/config.php";
     include "config/session.php";
     session_start();
-    date_default_timezone_set('Asia/Jakarta');
 
     $id = $_SESSION['id'];
     $service = $_POST['service'];
