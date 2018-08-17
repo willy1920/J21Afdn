@@ -110,29 +110,6 @@
 		else{
 			echo $mysqli->error;
 		}
-		$stmt->close();
-	}
-	else{
-		echo $stmt->error;
-	}
-
-	if ($confirmationRows > 0) {
-?>
-		<table class="w3-table w3-striped">
-			<tr class="w3-blue">
-				<th>Bank</th>
-				<th>No. Rek</th>
-				<th>Nama Pemilik</th>
-				<th>Status</th>
-			</tr>
-			<tr>
-				<td><?php echo $bank; ?></td>
-				<td><?php echo $numberAccount; ?></td>
-				<td><?php echo $accountOwner; ?></td>
-				<td><?php echo $status; ?></td>
-			</tr>
-		</table>
-<?php
 	}
 	else{
 ?>
