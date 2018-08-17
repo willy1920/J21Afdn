@@ -28,6 +28,7 @@
     }
 
     //detail nota
+    $status;
     $idNota;
     $ongkir;
     $sql = "SELECT 
@@ -39,7 +40,8 @@
             confirmation.picture,
             nonota.tanggal,
             nonota.service,
-            nonota.ongkir
+            nonota.ongkir,
+            nonota.status
             FROM confirmation
             INNER JOIN nonota
             ON confirmation.idNota = nonota.idNota
@@ -48,7 +50,7 @@
         $stmt->bind_param("i", $idConfirmation);
         if ($stmt->execute()) {
             $stmt->bind_result($sqlIdNota, $sqlDate, $sqlBank, $sqlNumberAccount, $sqlAccountOwner, $sqlPicture,
-                $sqlTanggalNota, $sqlService, $sqlOngkir);
+                $sqlTanggalNota, $sqlService, $sqlOngkir, $sqlStatus);
             ?> 
             <table class="w3-table w3-bordered">
                 <tr class="w3-blue">
@@ -57,10 +59,10 @@
                 </tr>
             <?php
             while ($stmt->fetch()) {
+                $status = $sqlStatus;
                 ?>
                 <tr>
-           <!--         <td rowspan="8"><img src="<?php echo "../confirmationPicture/".$sqlPicture; ?>" alt="Gambar Bukti Pembayaran" srcset="" class="buktiPembayaran"></td> -->
-                    <td rowspan="8"><img src="../picture/sample.jpg" alt="Gambar Bukti Pembayaran" srcset="" class="buktiPembayaran"></td>
+                    <td rowspan="8"><img src="<?php echo "../confirmationPicture/".$sqlPicture; ?>" alt="Gambar Bukti Pembayaran" srcset="" class="buktiPembayaran"></td>
                     <td style="padding-left: 17px">Id Nota</td>
                     <td>:</td>
                     <td><?php echo $sqlIdNota; $idNota = $sqlIdNota ?></td>
@@ -151,8 +153,7 @@
             while ($stmt->fetch()) {
                 ?>
                 <tr>
-<!--                    <td rowspan="6"><img src="<?php echo "../productPicture/".$sqlPicture ?>" alt="Gambar Produk" srcset=""></td>   -->
-                    <td rowspan="6"><img src="../picture/sample.jpg" alt="Gambar Bukti Pembayaran" srcset="" class="buktiPembayaran"></td>
+                    <td rowspan="6"><img src="<?php echo "../productPicture/".$sqlPicture ?>" alt="Gambar Produk" srcset=""></td>
                     <td style="padding-left: 17px; width: 200px">Nama Produk</td>
                     <td>:</td>
                     <td><?php echo $sqlProduct; ?></td>
@@ -194,9 +195,13 @@
     else{
         echo $mysqli->error;
     }
-?>
 
+    if ($status != 1) {
+?>
 <button onclick="updateNota(<?php echo $idNota; ?>)" class="w3-btn w3-blue" style="margin-top: 40px">Terima</button>
+<?php
+    }
+?>
 </div>
 </body>
 </html>
