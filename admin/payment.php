@@ -24,7 +24,7 @@
 <?php
     include 'menu.php';
 ?>
-    <div class="isi" style="margin: 0 200px;">
+    <div class="isi" style="margin: 0 100px;">
 <?php
     $sql = "SELECT
             confirmation.idConfirmation,
@@ -41,7 +41,7 @@
         if ($stmt->execute()) {
             $stmt->bind_result($sqlIdConfirmation, $sqlStatus, $sqlIdNota, $sqlDate, $sqlBank, $sqlNumerAccount, $sqlAccountOwner);
             ?>
-            <table class="w3-table w3-centeblue w3-striped" style="width: 800px; margin-top: 20px;">
+            <table class="w3-table w3-striped w3-bordered" style="margin-top: 20px;">
             <tr class="w3-blue">
                 <th>Id Nota</th>
                 <th>Tanggal</th>
@@ -62,20 +62,20 @@
                 <td><?php echo $sqlNumerAccount; ?></td>
                 <td><?php echo $sqlAccountOwner; ?></td>
                 <td><?php echo "Lunas"; ?></td>
-                <td><a href="paymentDetail.php?confirmation=<?php echo $sqlIdConfirmation; ?>">Detail</a></td>
+                <td><a href="paymentDetail.php?confirmation=<?php echo $sqlIdConfirmation; ?>"><button class="w3-btn w3-blue">Detail</button></a></td>
             </tr>
             <?php
                 }
                 else{
             ?>
-            <tr class="w3-red">
+            <tr>
                 <td><?php echo $sqlIdNota; ?></td>
                 <td><?php echo $sqlDate; ?></td>
                 <td><?php echo $sqlBank; ?></td>
                 <td><?php echo $sqlNumerAccount; ?></td>
                 <td><?php echo $sqlAccountOwner; ?></td>
                 <td><?php echo "Belum Lunas"; ?></td>
-                <td><a href="paymentDetail.php?confirmation=<?php echo $sqlIdConfirmation; ?>">Detail</a></td>
+                <td><a href="paymentDetail.php?confirmation=<?php echo $sqlIdConfirmation; ?>"><button class="w3-btn w3-blue">Detail</button></a></td>
             </tr>
             <?php
                 }
