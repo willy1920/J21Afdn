@@ -72,7 +72,7 @@
     
     </script>
 
-<div class="isi">
+<div style="margin: 30px -20px 20px 80px;">
 <?php
 	$sql = "SELECT product.idProduct, 
 			product.sellingPrice, 
@@ -85,11 +85,11 @@
 		while ($row = $query->fetch_assoc()) {
 			?>
 			<a href="detailProduct.php?idProduct=<?php echo $row['idProduct']; ?>">
-                <div class="w3-card-12" style="width: 200px; float: left; margin: 0 55px 50px 0;">
-                    <img src="productPicture/<?php echo $row['picture']; ?>" alt="Norway" style="width: 200px">
-                    <div style="padding: 10px;">
-                        <b><?php echo $row['name']; ?></b><br>
-                        <?php echo $row['sellingPrice']; ?>
+                <div class="w3-card-4" style="width: 200px; float: left; margin: 0 20px 40px">
+                    <img src="productPicture/<?php echo $row['picture']; ?>" alt="Norway" class="produk">
+                    <div style="padding: 10px 20px;">
+                        <div style="margin: 0 0 20px; height: 50px"><b><?php echo $row['name']; ?></b></div><br>
+                        <p style="margin-top: -20px;"><?php echo $row['sellingPrice']; ?></p>
                     </div>
                 </div>
             </a>
@@ -97,6 +97,36 @@
 		}
 	}
 ?>
+
+<!--    <div class="w3-card-4" style="width: 200px; float: left; margin-right: 40px">
+        <img src="picture/celana chino pria (99k).jpg" class="produk"><br>
+        <div style="padding: 10px 20px;">
+            <div style="margin: 0 0 20px"><b>Celana Chino Pria</b></div><br>
+            <p style="margin-top: -20px;">99000</p>
+        </div>
+    </div>
+    <div class="w3-card-4" style="width: 200px; float: left; margin-right: 40px">
+        <img src="picture/celana kulot wanita (55k).jpg" class="produk"><br>
+        <div style="padding: 10px 20px;">
+            <div style="margin-top: 0px"><b>Celana Kulot Wanita</b></div><br>
+            <p style="margin-top: -20px;">55000</p>
+        </div>
+    </div>
+    <div class="w3-card-4" style="width: 200px; float: left; margin-right: 40px">
+        <img src="picture/celana panjang kerja pria (118k).jfif" class="produk"><br>
+        <div style="padding: 10px 20px;">
+            <div style="margin-top: 0px"><b>Celana Panjang Kerja Pria</b></div><br>
+            <p style="margin-top: -20px;">118000</p>
+        </div>
+    </div>
+    <div class="w3-card-4" style="width: 200px; float: left; margin-right: 40px">
+        <img src="picture/celana panjang kerja wanita (61k).png" class="produk"><br>
+        <div style="padding: 10px 20px;">
+            <div style="margin-top: 0px;"><b>Celana Panjang Kerja Wanita</b></div><br>
+            <p style="margin-top: -20px;">61000</p>
+        </div>
+    </div>  -->
+
 </div>
 </body>
 </html>

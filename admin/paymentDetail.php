@@ -11,10 +11,15 @@
     <title>Konfirmasi Pembayaran</title>
     <script src="../js/ajax.js"></script>
     <script src="../js/payment.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style/w3.css">
+    <link rel="stylesheet" type="text/css" href="../style/css.css">
 </head>
 <body>
 <?php
-
+    include 'menu.php';
+?>
+    <div class="isi">
+<?php
     if (!isset($_GET['confirmation'])) {
         header("Location: payment.php");
     }
@@ -45,17 +50,18 @@
             $stmt->bind_result($sqlIdNota, $sqlDate, $sqlBank, $sqlNumberAccount, $sqlAccountOwner, $sqlPicture,
                 $sqlTanggalNota, $sqlService, $sqlOngkir);
             ?> 
-            <table>
-                <tr>
-                    <th>Bukti Pembayaran</th>
-                    <th colspan="3">Detail</th>
+            <table class="w3-table w3-bordered">
+                <tr class="w3-blue">
+                    <th style="width: 400px"><center>Bukti Pembayaran</center></th>
+                    <th colspan="3"><center>Detail<center></th>
                 </tr>
             <?php
             while ($stmt->fetch()) {
                 ?>
                 <tr>
-                    <td rowspan="8"><img src="<?php echo "../confirmationPicture/".$sqlPicture; ?>" alt="Gambar Bukti Pembayaran" srcset=""></td>
-                    <td>Id Nota</td>
+           <!--         <td rowspan="8"><img src="<?php echo "../confirmationPicture/".$sqlPicture; ?>" alt="Gambar Bukti Pembayaran" srcset="" class="buktiPembayaran"></td> -->
+                    <td rowspan="8"><img src="../picture/sample.jpg" alt="Gambar Bukti Pembayaran" srcset="" class="buktiPembayaran"></td>
+                    <td style="padding-left: 17px">Id Nota</td>
                     <td>:</td>
                     <td><?php echo $sqlIdNota; $idNota = $sqlIdNota ?></td>
                 </tr>
@@ -90,7 +96,7 @@
                     <td><?php echo $sqlService; ?></td>
                 </tr>
                 <tr>
-                    <td>Nama harga ongkir</td>
+                    <td>Harga ongkir</td>
                     <td>:</td>
                     <td><?php echo $sqlOngkir; $ongkir = $sqlOngkir?></td>
                 </tr>
@@ -135,18 +141,19 @@
             $stmt->bind_result($sqlPrice, $sqlCategory, $sqlProduct, $sqlDescription, $sqlPicture,
                 $sqlTotal, $sqlMessage);
             ?>
-            <h1>Produk yang dipesan</h1>
-            <table>
-                <tr>
-                    <th>Gambar Produk</th>
-                    <th colspan="3">Detail Produk</th>
+            <center><p style="font-size: 18px; margin: 60px 0 20px">Produk yang dipesan</p></center>
+            <table class="w3-table w3-bordered">
+                <tr class="w3-blue">
+                    <th style="width: 400px"><center>Gambar Produk</center></th>
+                    <th colspan="3"><center>Detail Produk</center</th>
                 </tr>
             <?php
             while ($stmt->fetch()) {
                 ?>
                 <tr>
-                    <td rowspan="6"><img src="<?php echo "../productPicture/".$sqlPicture ?>" alt="Gambar Produk" srcset=""></td>
-                    <td>Nama Produk</td>
+<!--                    <td rowspan="6"><img src="<?php echo "../productPicture/".$sqlPicture ?>" alt="Gambar Produk" srcset=""></td>   -->
+                    <td rowspan="6"><img src="../picture/sample.jpg" alt="Gambar Bukti Pembayaran" srcset="" class="buktiPembayaran"></td>
+                    <td style="padding-left: 17px; width: 200px">Nama Produk</td>
                     <td>:</td>
                     <td><?php echo $sqlProduct; ?></td>
                 </tr>
@@ -189,7 +196,8 @@
     }
 ?>
 
-<button onclick="updateNota(<?php echo $idNota; ?>)">Terima</button>
+<button onclick="updateNota(<?php echo $idNota; ?>)" class="w3-btn w3-blue" style="margin-top: 40px">Terima</button>
+</div>
 </body>
 </html>
 

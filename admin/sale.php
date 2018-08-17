@@ -25,7 +25,7 @@
 <div class="isi">
     <div class="w3-modal" style="display: none;" id="saleAdd">
         <form action="saleAdd.php" method="post" style="margin: 30px 450px; background-color: white; padding: 30px;">
-            <button class="cancel w3-btn w3-red" onclick="document.getElementById('saleAdd').style.display='none'">X</button>
+            <button class="cancel w3-btn w3-blue" onclick="document.getElementById('saleAdd').style.display='none'">X</button>
             <center>Pilih produk : <select name="addIdProduct" style="margin-bottom: 20px">
             <?php
                 $sql = "SELECT product.idProduct, dataproduct.name
@@ -46,13 +46,13 @@
             Jam berakhir : <input type="date" name="finishDate" required style="margin: 0 0 20px;">
             <input type="time" name="finishTime" required style="margin: 0 0 20px;"><br>
             <input type="number" name="limitStock" required class="search" placeholder="Batas Stock" style="margin: 0 0 20px;"><br>
-            <input type="submit" value="Submit" name="addSubmit" onclick="document.getElementById('saleAdd').style.display='none'" class="w3-btn w3-red"></center>
+            <input type="submit" value="Submit" name="addSubmit" onclick="document.getElementById('saleAdd').style.display='none'" class="w3-btn w3-blue"></center>
         </form>
     </div>
 
     <div class="w3-modal" style="display: none;" id="saleEdit">
         <form action="saleEdit.php" method="post" style="margin: 30px 450px; background-color: white; padding: 30px;">
-            <button class="cancel w3-btn w3-red" onclick="document.getElementById('saleEdit').style.display='none'">X</button>
+            <button class="cancel w3-btn w3-blue" onclick="document.getElementById('saleEdit').style.display='none'">X</button>
             <input type="hidden" name="editIdSale" id="editIdSale">
             <center>Pilih produk : <select name="editIdProduct" id="editProduct" style="margin-bottom: 20px">
             <?php
@@ -74,13 +74,13 @@
             Jam berakhir : <input type="date" name="editFinishDate" required style="margin: 0 0 20px;">
             <input type="time" name="editFinishTime" required style="margin: 0 0 20px;"><br>
             <input type="number" name="editLimitStock" required class="search" placeholder="Batas Stock" style="margin: 0 0 20px;"><br>
-            <input type="submit" value="Submit" name="editSubmit" onclick="document.getElementById('saleEdit').style.display='none'" class="w3-btn w3-red"></center>
+            <input type="submit" value="Submit" name="editSubmit" onclick="document.getElementById('saleEdit').style.display='none'" class="w3-btn w3-blue"></center>
         </form>
     </div>
 
-        <button class="w3-btn w3-red" style="margin-bottom: 20px;" onclick="document.getElementById('saleAdd').style.display='block'">Tambah Promo</button>
+        <button class="w3-btn w3-blue" style="margin-bottom: 20px;" onclick="document.getElementById('saleAdd').style.display='block'">Tambah Promo</button>
         <table class="w3-table w3-hoverable w3-striped">
-            <tr class="w3-red">
+            <tr class="w3-blue">
                 <th>Nama Produk</th>
                 <th>Diskon</th>
                 <th>Waktu Dimulai</th>

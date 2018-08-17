@@ -55,7 +55,7 @@
   <input type="text" name="search" placeholder="Cari produk" class="search" style="margin: 0 0 20px 0; float: right;">
   <table class="w3-table w3-hoverable w3-striped">
     <tr class="w3-blue">
-      <td>ID Produk</td>
+      <td style="width: 100px">ID Produk</td>
       <td>Nama Produk</td>
       <td>Deskripsi</td>
       <td>Ukuran</td>
