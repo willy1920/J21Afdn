@@ -1,7 +1,6 @@
 <?php
     include "config/config.php";
-    include "config/session.php";
-    session_start();
+    include "config/sessionUser.php";
 
     $id = $_SESSION['id'];
     $service = $_POST['service'];
@@ -9,15 +8,33 @@
     $contact = $_POST['contact'];
     $date = date('Y-m-d');
     $status = 0;
-
     //check nota
-    $sql = "SELECT idNota FROM nonota WHERE idAccount='$id'";
-    $query = $mysqli->query($sql);
-    $isiNota = $query->num_rows;
-    $checkNota = $query->fetch_assoc();
-    $checkIdNota = $checkNota['idNota'];
+    $checkIdNota;
+    $idNota;
+    $isiNota = 0;
+    $sql = "SELECT idNota FROM nonota WHERE idAccount=? and status=?";
+    if ($stmt = $mysqli->prepare($sql)) {
+        $stmt->bind_param("si", $id, $status);
+        if ($stmt->execute()) {
+            $stmt->bind_result($sqlIdNota);
+            $isiNota = 0;
+            while ($stmt->fetch()) {
+                $isiNota++;
+                $checkIdNota = $sqlIdNota;
+            }
+        }
+        else{
+            echo $stmt->error;
+        }
+        $stmt->close();
+    }
+    else{
+        echo $mysqli->error;
+    }
+    
     //create nota
     $json;
+    $status = 0;
     if ($isiNota == 0) {
         $service = explode(" Rp ", $service);
         $json = '{';

@@ -3,7 +3,7 @@
 	<input type="text" name="search" placeholder="Cari produk" class="search">
 	<a href="index.php"><button>Home</button></a>
 	<div class="w3-dropdown-hover">
-      <button>Kategori</button>
+		<button>Kategori</button>
       <div class="w3-dropdown-content w3-card-4" style="width: 200px; transition: 0.5s;">
       	<?php
 			$sql = "SELECT * FROM category";
@@ -11,7 +11,7 @@
 			while ($row = $query->fetch_assoc()) {
 				if($row['idCategory'] != 1){
 		?>		
-				<a href="#" style="width: 100%"><?php echo ucfirst($row['name']); ?></a>
+				<a href="category.php?id=<?php echo $row['idCategory']; ?>" style="width: 100%"><?php echo ucfirst($row['name']); ?></a>
 		<?php
 				}
 			}
