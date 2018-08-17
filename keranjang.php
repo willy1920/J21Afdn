@@ -69,7 +69,7 @@
                 <tr>
                     <td style="padding: 20px">
                     <div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 0px 0; background-color: white;">
-                        <img src="<?php echo "productPicture/".$picture; ?>" alt="Norway" style="width: 200px">
+                        <img src="<?php echo "productPicture/".$picture; ?>" alt="Norway" class="produk">
                         <div style="padding: 10px;">
                             <b><?php echo $name; ?></b><br>
                             Jumlah : <?php echo $total ?><br>

@@ -55,7 +55,7 @@
         <button class="cancel w3-btn w3-blue" onclick="document.getElementById('productEdit').style.display='none'" style="margin: -30px 0px">X</button>
         <input type="hidden" name="idProductEdit" id="idProductEdit">
 	    <input type="text" id="nameEdit" name="nameEdit" required class="search" placeholder="Masukkan Nama Produk" style="margin: 0 0 10px 55px;" autofocus><br>
-        <img id="showPictureEdit" src="" alt="" srcset=""><br>
+        <center><img id="showPictureEdit" src="" alt="" srcset=""></center><br>
 	    Upload gambar : <input id="pictureEdit" type="file" name="pictureEdit" style="margin: 0 0 10px 0;" accept="image/*"><br>
 	    <input type="text" id="descriptionEdit" name="descriptionEdit" required class="search" placeholder="Masukkan Deskripsi Produk" style="margin: 0 0 10px 55px;"><br>
 	    <input type="text" id="smallSizeEdit" name="smallSizeEdit" required class="search" placeholder="Ukuran paling kecil" style="margin: 0 0 10px 55px;"><br>

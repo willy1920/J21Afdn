@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="../style/w3.css">
     <link rel="stylesheet" type="text/css" href="../style/css.css">
-    <title>Silahkan Belanja</title>
+    <title>Zahra House</title>
     <script src="js/ajax.js"></script>
     <script src="js/user.js"></script>
     <script>
