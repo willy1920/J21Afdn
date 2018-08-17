@@ -78,15 +78,16 @@
 			$stmt->bind_param("s", $id);
 			if ($stmt->execute()) {
 				$stmt->bind_result($sqlStatus, $sqlIdConfirmation, $sqlBank, $sqlNumberAccount, $sqlAccountOwner);
-				?><table><?php
+				?>
+				<table>
+				<tr>
+					<th>Bank</th>
+					<th>No. Rek</th>
+					<th>Nama Pemilik</th>
+					<th>Status</th>
+				</tr><?php
 				while ($stmt->fetch()) {
 					?>
-					<tr>
-						<th>Bank</th>
-						<th>No. Rek</th>
-						<th>Nama Pemilik</th>
-						<th>Status</th>
-					</tr>
 					<tr>
 						<td><?php echo $sqlBank; ?></td>
 						<td><?php echo $sqlNumberAccount; ?></td>
