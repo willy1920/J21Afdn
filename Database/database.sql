@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 16, 2018 at 03:05 PM
+-- Generation Time: Aug 17, 2018 at 08:40 AM
 -- Server version: 10.3.8-MariaDB-log
 -- PHP Version: 7.2.8
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tokobaju1`
+-- Database: `tokobaju2`
 --
 
 -- --------------------------------------------------------
@@ -35,13 +35,6 @@ CREATE TABLE `account` (
   `phoneNumber` char(12) DEFAULT NULL,
   `email` char(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `account`
---
-
-INSERT INTO `account` (`idEmail`, `picture`, `status`, `phoneNumber`, `email`) VALUES
-('willychai04@gmail.com', 'jefiwjife', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -59,14 +52,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`idCategory`, `name`) VALUES
-(1, 'Baju Bayi'),
-(2, 'Celana pendek bayi'),
-(3, 'Celana panjang bayi'),
-(4, 'Sarung tangan'),
-(5, 'Kaos kaki'),
-(6, 'Topi bayi'),
-(7, 'Setelan Baju Bayi'),
-(8, 'Baju Bayi');
+(1, 'unknown');
 
 -- --------------------------------------------------------
 
@@ -84,13 +70,6 @@ CREATE TABLE `confirmation` (
   `picture` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `confirmation`
---
-
-INSERT INTO `confirmation` (`idConfirmation`, `idNota`, `date`, `bank`, `numberAccount`, `accountOwner`, `picture`) VALUES
-(2, 12, '2018-08-16', 'abc', '123', 'aaa', '244c6c370fd1859325f7119e96a81584e.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -105,13 +84,6 @@ CREATE TABLE `contact` (
   `postalCode` mediumint(6) UNSIGNED NOT NULL,
   `Address` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `contact`
---
-
-INSERT INTO `contact` (`idContact`, `idAccount`, `idCity`, `idProvince`, `postalCode`, `Address`) VALUES
-(6, 'willychai04@gmail.com', 27, 2, 78111, 'Jl. Merdeka');
 
 -- --------------------------------------------------------
 
@@ -128,18 +100,6 @@ CREATE TABLE `dataproduct` (
   `picture` char(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `dataproduct`
---
-
-INSERT INTO `dataproduct` (`idProduct`, `name`, `description`, `size`, `color`, `picture`) VALUES
-(4, 'Topi bonnet bayi perempuan bunga', 'Untuk bayi 0-24 bulan (allsize) Lingkar kepala 36-48 cm Material: cotton Pilihan warna: pink dan putih  Harga untuk 1x topi bayi ', 'S-XL', '#e971f2', '4c7489d8c7ef9dfb4cfbeb61b824a363b.jpg'),
-(5, 'Topi Pilot Anak &amp; Bayi Rajut', 'Topi Pilot Anak &amp; Bayi Rajut Untuk usia anak : 6 bulan - 3 tahun Ada 9 pilihan warna B, C, D dan F Kosong', 'S-XL', '#97ac40', '5646dd5120051663f2ecea223e6d6adaf.jpg'),
-(6, 'baju setelan anak bayi rompi tentara topi - cool army', 'READY SIZE ( 1 , 2 , 3 , 5 , 6 )  Setelan Baju Bayi Army (tentara) dengan Rompi Pisah dan Topi.', 'S-XL', '#278a15', '6940a7888cc97174dc6a61b594921b2b5.jpg'),
-(7, 'Jumper Bayi Nanas + Topi Laki laki Perempuan Baju Kostum Karakter Baby', 'Jumper Bayi Nanas + Topi  Bahan : Kaos (lembut, adem dan nyaman dipakai buah hati)', 'S-XL', '#e1dc11', '74ac6dd06335425875f507c83bbf4eb54.jpg'),
-(8, 'Setelan Baju Anak Bayi laki Lucu 2 Dasi + Topi - Thomas', 'Pilihan Warna : MERAH?BIRU NAVY/ABU (MOHON CEK STOK DAHULU) 1 set terdiri dari : Baju + Celana + Topi + 2 Dasi (dasi Kupu kupu dan Dasi Panjang)', 'S-XL', '#e90a0f', '8442a6d451b436d8a04137a0e82320f4d.jpg'),
-(9, 'KAOS KAKI LUCU BAYI IMPORT MURAH - 12-24mo, tupaicoklattua', 'bahan premium, halus dan sangat nyaman dipakai untuk kaki si Kecil Mom,  bentuk sangat Lucu, menarik, warna cerah, dan bentuk 3d yah Mom^^', 'S-XL', '#219a10', '90c0b025e19357db01cf77ed348a37be5.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -155,24 +115,6 @@ CREATE TABLE `nonota` (
   `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `nonota`
---
-
-INSERT INTO `nonota` (`idNota`, `idAccount`, `tanggal`, `service`, `ongkir`, `status`) VALUES
-(1, '', '2018-08-16', '', 0, 0),
-(2, '', '2018-08-16', 'Array', 49000, 0),
-(3, '', '2018-08-16', 'OKE', 49000, 0),
-(4, '', '2018-08-16', 'OKE', 49000, 0),
-(5, '', '2018-08-16', 'OKE', 49000, 0),
-(6, '', '2018-08-16', 'OKE', 49000, 0),
-(7, '', '2018-08-16', 'OKE', 49000, 0),
-(8, '', '2018-08-16', 'OKE', 49000, 0),
-(9, '', '2018-08-16', 'OKE', 49000, 0),
-(10, '', '2018-08-16', 'OKE', 49000, 0),
-(11, '', '2018-08-16', 'OKE', 49000, 0),
-(12, 'willychai04@gmail.com', '2018-08-16', 'OKE', 49000, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -187,34 +129,6 @@ CREATE TABLE `orderr` (
   `message` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `orderr`
---
-
-INSERT INTO `orderr` (`idOrder`, `idProduct`, `idNota`, `total`, `message`) VALUES
-(1, 5, 1, 1, ''),
-(2, 5, 1, 1, ''),
-(3, 7, 2, 1, ''),
-(4, 5, 2, 1, ''),
-(5, 7, 3, 1, ''),
-(6, 5, 3, 1, ''),
-(7, 7, 4, 1, ''),
-(8, 5, 4, 1, ''),
-(9, 7, 5, 1, ''),
-(10, 5, 5, 1, ''),
-(11, 7, 6, 1, ''),
-(12, 5, 6, 1, ''),
-(13, 7, 7, 1, ''),
-(14, 5, 7, 1, ''),
-(15, 7, 8, 1, ''),
-(16, 5, 8, 1, ''),
-(17, 7, 9, 1, ''),
-(18, 5, 9, 1, ''),
-(19, 5, 11, 1, ''),
-(20, 8, 11, 1, ''),
-(21, 4, 12, 1, ''),
-(22, 7, 12, 1, '');
-
 -- --------------------------------------------------------
 
 --
@@ -228,21 +142,6 @@ CREATE TABLE `product` (
   `sellingPrice` mediumint(8) UNSIGNED NOT NULL,
   `stock` smallint(5) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`idProduct`, `idCategory`, `capital`, `sellingPrice`, `stock`) VALUES
-(1, 6, 10000, 50000, 100),
-(2, 2, 5000, 45000, 10),
-(3, 2, 5000, 45000, 10),
-(4, 6, 5000, 45000, 10),
-(5, 6, 5000, 45000, 10),
-(6, 3, 5000, 45000, 10),
-(7, 7, 10000, 45000, 10),
-(8, 7, 10000, 58000, 10),
-(9, 5, 10000, 60000, 10);
 
 -- --------------------------------------------------------
 
@@ -272,13 +171,6 @@ CREATE TABLE `sosmed` (
   `type` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `sosmed`
---
-
-INSERT INTO `sosmed` (`idSosmed`, `userSosmed`, `pass`, `type`) VALUES
-(1, 'nindya@gmail.com', 'SjIxQWZkbjQh', 'Instagram');
-
 -- --------------------------------------------------------
 
 --
@@ -291,7 +183,8 @@ CREATE TABLE `transaction` (
   `productName` char(100) NOT NULL,
   `total` tinyint(3) NOT NULL,
   `capital` mediumint(8) NOT NULL,
-  `sellingPrice` mediumint(8) NOT NULL
+  `sellingPrice` mediumint(8) NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -307,15 +200,6 @@ CREATE TABLE `trolli` (
   `total` smallint(5) NOT NULL,
   `message` tinytext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `trolli`
---
-
-INSERT INTO `trolli` (`idTrolli`, `idAccount`, `idProduct`, `total`, `message`) VALUES
-(9, 'willychai04@gmail.com', 6, 1, ''),
-(10, 'willychai04@gmail.com', 4, 1, ''),
-(11, 'willychai04@gmail.com', 4, 1, '');
 
 --
 -- Indexes for dumped tables
@@ -405,43 +289,43 @@ ALTER TABLE `trolli`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `idCategory` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idCategory` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `confirmation`
 --
 ALTER TABLE `confirmation`
-  MODIFY `idConfirmation` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idConfirmation` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `idContact` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idContact` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `nonota`
 --
 ALTER TABLE `nonota`
-  MODIFY `idNota` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idNota` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orderr`
 --
 ALTER TABLE `orderr`
-  MODIFY `idOrder` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idOrder` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `idProduct` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idProduct` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sosmed`
 --
 ALTER TABLE `sosmed`
-  MODIFY `idSosmed` tinyint(2) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idSosmed` tinyint(2) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `transaction`
@@ -453,7 +337,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `trolli`
 --
 ALTER TABLE `trolli`
-  MODIFY `idTrolli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idTrolli` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
