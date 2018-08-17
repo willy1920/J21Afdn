@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Toko Baju 1</title>
+	<title>Zahra House</title>
 	<meta name="google-signin-scope" content="profile email"> 
     <meta name="google-signin-client_id" content="571963356124-9nhkogpvo06cmqjnav3qh8cv3848n6na.apps.googleusercontent.com"> 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -31,7 +31,7 @@
     include 'header.php';
 ?>
 
-<div class="isi">
+<div class="isi" style="padding-left: 170px">
 <?php
     $isi;
     $totalPrice = 0;
@@ -57,8 +57,8 @@
         if ($stmt->execute()) {
             $stmt->bind_result($idProduct, $sellingPrice, $name, $picture, $total);
             ?>
-            <table class="w3-table w3-bordered" style="margin-bottom: 40px;">
-                <tr class="w3-red">
+            <table class="w3-table w3-bordered w3-striped" style="margin: 0 100px 40px 0; width: 500px; float: left">
+                <tr class="w3-blue">
                     <td>Produk yang Dipesan</td>
                 </tr>
             <?php
@@ -67,8 +67,8 @@
                 $i++;
                 ?>
                 <tr>
-                    <td>
-                    <div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 0px 0;">
+                    <td style="padding: 20px">
+                    <div class="w3-card-4" style="width: 200px; float: left; margin: 0 55px 0px 0; background-color: white;">
                         <img src="<?php echo "productPicture/".$picture; ?>" alt="Norway" style="width: 200px">
                         <div style="padding: 10px;">
                             <b><?php echo $name; ?></b><br>
@@ -98,6 +98,20 @@
     }
     if($isi > 0){
 ?>
+
+    <table class="w3-table w3-bordered" style="margin: 0 0 40px 0px; width: 400px;">
+        <tr class="w3-blue">
+            <td>Jasa Pengiriman</td>
+        </tr>
+        <tr>
+            <td style="padding: 20px;">
+                <p style="margin: -5px 0">Nama Perusahaan : JNE</p><br>
+                <p style="margin: -5px 0">Jenis Service : <select name="service" id="service" onchange="changeService()"></select></p><br>
+                <p><input type="hidden" name="servicePrice" id="servicePrice"></p><br>
+            </td>
+        </tr>
+    </table>
+
     Pilih alamat : <select name="address" id="address" onchange="changeDestination()">
     <?php
     $sql = "SELECT idContact, Address, idCity FROM contact";
@@ -113,23 +127,13 @@
         var b = a.split(" ");
         getCost(b[1]);
     </script>
-    <table class="w3-table w3-bordered" style="margin-bottom: 40px;">
-        <tr class="w3-red">
-            <td>Jasa Pengiriman</td>
-        </tr>
-        <tr>
-            <td style="padding: 20px;">
-                <p style="margin: -5px 0">Nama Perusahaan : JNE</p><br>
-                <p style="margin: -5px 0">Jenis Service : <select name="service" id="service" onchange="changeService()"></select></p><br>
-                <p><input type="hidden" name="servicePrice" id="servicePrice"></p><br>
-            </td>
-        </tr>
-    </table>
 
-        
     <input type="hidden" id="hiddenTotalPrice" value="<?php echo $totalPrice; ?>">
-    <p style="margin-top: 40px">Total biaya : <p id="totalPrice"><?php echo $totalPrice; ?></p></p><br>
-    <button class="w3-btn w3-red" style="margin-top: 10px" onclick="addOrder()">Konfirmasi Pesanan</button>
+    <div style="margin-top: 20px">
+        <div style="float: left; margin-right: 10px">Total biaya : </div> 
+        <div id="totalPrice"><?php echo $totalPrice; ?></div>
+    </div><br>
+    <button class="w3-btn w3-blue" style="margin-top: 10px" onclick="addOrder()">Konfirmasi Pesanan</button>
 </div>
 <?php
     }

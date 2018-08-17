@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Toko Baju 1</title>
+	<title>Zahra House</title>
 	<meta name="google-signin-scope" content="profile email"> 
     <meta name="google-signin-client_id" content="571963356124-9nhkogpvo06cmqjnav3qh8cv3848n6na.apps.googleusercontent.com"> 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -88,8 +88,8 @@
 
 	if ($confirmationRows > 0) {
 ?>
-		<table>
-			<tr>
+		<table class="w3-table w3-striped">
+			<tr class="w3-blue">
 				<th>Bank</th>
 				<th>No. Rek</th>
 				<th>Nama Pemilik</th>
