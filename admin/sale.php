@@ -26,7 +26,7 @@
     <div class="w3-modal" style="display: none;" id="saleAdd">
         <form action="saleAdd.php" method="post" style="margin: 30px 450px; background-color: white; padding: 30px;">
             <button class="cancel w3-btn w3-blue" onclick="document.getElementById('saleAdd').style.display='none'">X</button>
-            <center>Pilih produk : <select name="addIdProduct" style="margin-bottom: 20px">
+            <center>Pilih produk : <select name="addIdProduct" style="margin-bottom: 20px; width: 200px">
             <?php
                 $sql = "SELECT product.idProduct, dataproduct.name
                         FROM product
@@ -54,7 +54,7 @@
         <form action="saleEdit.php" method="post" style="margin: 30px 450px; background-color: white; padding: 30px;">
             <button class="cancel w3-btn w3-blue" onclick="document.getElementById('saleEdit').style.display='none'">X</button>
             <input type="hidden" name="editIdSale" id="editIdSale">
-            <center>Pilih produk : <select name="editIdProduct" id="editProduct" style="margin-bottom: 20px">
+            <center>Pilih produk : <select name="editIdProduct" id="editProduct" style="margin-bottom: 20px; width: 200px">
             <?php
                 $sql = "SELECT product.idProduct, dataproduct.name
                         FROM product
