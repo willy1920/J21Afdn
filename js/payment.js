@@ -6,7 +6,8 @@ function updateNota(idNota) {
         request =  ajax(request);
         request.onreadystatechange = function() {
             if (request.status == 200 && request.readyState == 4) {
-                respon = request.responseText
+                respon = request.responseText;
+                
                 json = JSON.parse(respon);
 
                 if (json['status'] == 1) {

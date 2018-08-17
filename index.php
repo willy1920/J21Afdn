@@ -88,7 +88,7 @@
                 <div class="w3-card-4" style="width: 200px; float: left; margin: 0 20px 40px">
                     <img src="productPicture/<?php echo $row['picture']; ?>" alt="Norway" class="produk">
                     <div style="padding: 10px 20px;">
-                        <div style="margin: 0 0 20px; height: 50px"><b><?php echo $row['name']; ?></b></div><br>
+                        <div style="margin: 0 0 20px; height: 50px"><b><?php $name = (strlen($row['name']) > 40) ? substr($row['name'],0, 40)."..." : substr($row['name'],0, 40); echo $name; ?></b></div><br>
                         <p style="margin-top: -20px;"><?php echo $row['sellingPrice']; ?></p>
                     </div>
                 </div>
