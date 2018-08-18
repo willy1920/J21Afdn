@@ -28,14 +28,32 @@
 <body>
 
 <?php
+    
     include 'header.php';
+    $id = $_SESSION['id'];
+    $sql = "SELECT idContact FROM contact WHERE idAccount=?";
+    if ($stmt = $mysqli->prepare($sql)) {
+        $stmt->bind_param("s", $id);
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            if ($stmt->num_rows < 1) {
+                header("Location: kontak.php?message=Tambah alamat terlebih dahulu untuk bisa beli item");
+            }
+        }
+        else{
+            echo $stmt->error;
+        }
+        $stmt->close();
+    }
+    else{
+        $mysqli->error;
+    }
 ?>
 
 <div class="isi" style="padding-left: 170px">
 <?php
     $isi;
     $totalPrice = 0;
-    $id = $_SESSION['id'];
     //cek banyaknya trolli pengguna
     $sql = "SELECT idTrolli FROM trolli WHERE idAccount='$id' ORDER BY idTrolli";
     $query = $mysqli->query($sql);
@@ -45,7 +63,8 @@
             product.sellingPrice,
             dataproduct.name,
             dataproduct.picture,
-            trolli.total
+            trolli.total,
+            trolli.message
             FROM trolli
             INNER JOIN product
             ON trolli.idProduct = product.idProduct
@@ -55,7 +74,7 @@
     if ($stmt = $mysqli->prepare($sql)) {
         $stmt->bind_param("s", $id);
         if ($stmt->execute()) {
-            $stmt->bind_result($idProduct, $sellingPrice, $name, $picture, $total);
+            $stmt->bind_result($idProduct, $sellingPrice, $name, $picture, $total, $message);
             ?>
             <table class="w3-table w3-bordered w3-striped" style="margin: 0 100px 40px 0; width: 500px; float: left">
                 <tr class="w3-blue">
@@ -77,7 +96,8 @@
                         </div>
                     </div>
                     <div>
-                        Total = <?php echo $sellingPrice*$total; $totalPrice += $sellingPrice*$total ?>
+                        Total = <?php echo $sellingPrice*$total; $totalPrice += $sellingPrice*$total ?><br><br><br>
+                        Pesan : <?php echo $message; ?><br>
                     </div>
                     </td>
                 </tr>

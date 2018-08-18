@@ -52,3 +52,27 @@ function editProduct(idProduct){
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(input);
 }
+
+function productDelete(idProduct, name) {
+    let ask, request, input;
+    ask = confirm("Apakah anda yaking menghapus " + name);
+    if (ask) {
+        input = 'id=' + idProduct;
+        request =  ajax(request);
+        request.onreadystatechange = function() {
+            if (request.status == 200 && request.readyState == 4) {
+                console.log(request.responseText);
+                
+                if (request.responseText == 1) {
+                    window.location = "product.php";
+                }
+                else{
+                    alert("Failed to delete");
+                }
+            }
+        }
+        request.open("POST", "productDelete.php", true);
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.send(input);
+    }
+}

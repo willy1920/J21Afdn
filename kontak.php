@@ -1,5 +1,9 @@
 <?php
-	include "config/config.php";
+    include "config/config.php";
+    include "config/sessionUser.php";
+    if (isset($_GET['message'])) {
+        ?><script>alert("<?php echo $_GET['message']; ?>")</script><?php
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,9 +19,6 @@
     <script src="js/user.js"></script>
 </head>
 <script>
-    window.onload = function(){
-        getProvince();
-    };
 	function menuProfilIn(){
 		document.getElementById('menuProfil').classList.add('in');
 		document.getElementById('menuProfil').classList.remove('out');
@@ -56,7 +57,7 @@
     </div>
 
 <div class="isi">
-<button class="w3-btn w3-blue" style="margin-bottom: 20px" onclick="document.getElementById('contactAdd').style.display='block'">Tambah Alamat</button>
+<button class="w3-btn w3-blue" style="margin-bottom: 20px" onclick="addContactForm()">Tambah Alamat</button>
 <center>
     <table class="w3-table">
         <tr class="w3-blue">
