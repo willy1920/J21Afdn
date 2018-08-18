@@ -59,8 +59,7 @@
 </div>
 
 <div class="isi" style="margin: 0 200px;">
-  <button class="w3-btn w3-blue" onclick="document.getElementById('sosmedAdd').style.display='block'">Tambah Akun</button>
-  <input type="text" name="search" placeholder="Cari akun" class="search" style="margin: 0 0 20px 0; float: right;">
+  <button class="w3-btn w3-blue" onclick="document.getElementById('sosmedAdd').style.display='block'" style="margin-bottom: 20px">Tambah Akun</button>
   <table class="w3-table w3-hoverable w3-striped">
     <tr class="w3-blue">
       <td>ID</td>

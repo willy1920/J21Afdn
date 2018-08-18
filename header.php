@@ -1,6 +1,5 @@
 <div class="header w3-card-4">
 	<p class="toko"><i>Zahra House</i></p>
-	<input type="text" name="search" placeholder="Cari produk" class="search">
 	<a href="index.php"><button>Home</button></a>
 	<div class="w3-dropdown-hover">
 		<button>Kategori</button>
