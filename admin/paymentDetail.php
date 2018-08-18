@@ -153,7 +153,7 @@
             while ($stmt->fetch()) {
                 ?>
                 <tr>
-                    <td rowspan="6"><img src="<?php echo "../productPicture/".$sqlPicture ?>" alt="Gambar Produk" srcset=""></td>
+                    <td rowspan="6"><img src="<?php echo "../productPicture/".$sqlPicture ?>" class="buktiPembayaran" alt="Gambar Produk" srcset=""></td>
                     <td style="padding-left: 17px; width: 200px">Nama Produk</td>
                     <td>:</td>
                     <td><?php echo $sqlProduct; ?></td>

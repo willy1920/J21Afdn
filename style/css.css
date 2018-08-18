@@ -59,6 +59,8 @@
 	cursor: pointer;
 }
 .isi{
+	widows: 100%;
+	height: auto;
 	padding: 30px 50px;
 }
 .option{
