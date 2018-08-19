@@ -7,21 +7,10 @@
 <head>
 <?php include 'head.php'; ?>
 </head>
-<script>
-	function menuProfilIn(){
-		document.getElementById('menuProfil').classList.add('in');
-		document.getElementById('menuProfil').classList.remove('out');
-	}
-	function menuProfilOut(){
-		document.getElementById('menuProfil').classList.remove('in');
-		document.getElementById('menuProfil').classList.add('out');
-	}
-</script>
 <body>
 
 <?php
     
-    include 'header.php';
     $id = $_SESSION['id'];
     $sql = "SELECT idContact FROM contact WHERE idAccount=?";
     if ($stmt = $mysqli->prepare($sql)) {
@@ -40,6 +29,7 @@
     else{
         $mysqli->error;
     }
+    include 'header.php';
 ?>
 
 <div class="isi" style="padding-left: 170px">
