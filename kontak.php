@@ -44,7 +44,7 @@
             <select name="editProvince" id="editProvince" onchange="editChangeProvince()" style="margin-bottom: 20px;"></select><br>
             <select name="editCity" id="editCity" style="margin-bottom: 20px;"></select><br>
             <input type="text" id="editPostalCode" name="editPostalCode" required class="search" placeholder="Masukkan Kode Pos" style="margin: 0 0 20px;"><br>
-            <input type="submit" value="Submit" name="editSubmit" onclick="editContact()" class="w3-btn w3-blue" style="margin-top: 20px;"></center>
+            <input type="submit" value="Submit" name="editSubmit" class="w3-btn w3-blue" style="margin-top: 20px;"></center>
         </form>
     </div>
 

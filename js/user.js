@@ -29,7 +29,7 @@ function submitTrolli() {
     request.send(input);
 }
 
-function getProvince() {
+function getProvince(callback) {
     let request;
     request =  ajax(request);
     request.onreadystatechange = function() {
@@ -43,8 +43,7 @@ function getProvince() {
         }
     }
     request.open("POST", "config/getProvince.php", true);
-    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send(input);
+    request.send();
 }
 
 function getCity(forms, idProvince, idCity){
@@ -190,7 +189,7 @@ function changeService() {
 function addContactForm() {
     let results;
     document.getElementById('contactAdd').style.display='block';
-    getProvince('add', function (respon) {
+    getProvince(function (respon) {
         results = respon;
         var province = document.getElementById('addProvince');
         var option;
@@ -210,7 +209,7 @@ function editContactForm(idContact, address, idCity, idProvince, postalCode) {
     document.getElementById('editAddress').value = address;
     document.getElementById('editPostalCode').value = postalCode;
     document.getElementById('editIdContact').value = idContact;
-    getProvince('edit', function (respon) {
+    getProvince(function (respon) {
         results = respon;
         var province = document.getElementById('editProvince');
         var option;

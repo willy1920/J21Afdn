@@ -28,13 +28,13 @@
 </div>
 <script>
 	function onSignIn(googleUser) {
-    var idGoogle;
-    var profile = googleUser.getBasicProfile(); 
-    idGoogle = profile.getEmail(); 
-    var picture = profile.getImageUrl();
-    document.getElementById("signInGoogle").style.display = "none";
-    // The ID token you need to pass to your backend: 
-    sendBack(idGoogle, picture);
+        var idGoogle;
+        var profile = googleUser.getBasicProfile(); 
+        idGoogle = profile.getEmail(); 
+        var picture = profile.getImageUrl();
+        document.getElementById("signInGoogle").style.display = "none";
+        // The ID token you need to pass to your backend: 
+        sendBack(idGoogle, picture);
     };
     function sendBack(idGoogle, picture){
         var input = "idGoogle=" + idGoogle + "&picture=" + picture;
