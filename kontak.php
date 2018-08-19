@@ -66,7 +66,7 @@
             <td><?php echo $row['Address']; ?></td>
             <td><?php echo $row['postalCode']; ?></td>
             <td><center><a class="option" onclick="editContactForm(<?php echo $row['idContact'].",'".$row['Address']."',".$row['idCity'].",".$row['idProvince'].",".$row['postalCode']; ?>)">Edit</a></center></td>
-            <td><center><a onclick="contactDelete(<?php echo $row['idContact']; ?>,'<?php echo $row['address']; ?>')" class="option">Hapus</a></center></td>
+            <td><center><a onclick="contactDelete(<?php echo $row['idContact']; ?>,'<?php echo $row['Address']; ?>')" class="option">Hapus</a></center></td>
         </tr>
         <?php
             }

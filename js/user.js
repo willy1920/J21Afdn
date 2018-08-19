@@ -231,3 +231,27 @@ function addChangeProvince() {
 function editChangeProvince() {
     getCity('edit', document.getElementById('editProvince').value);
 }
+
+function contactDelete(id, address) {
+    let ask, request, input;
+    ask = confirm("Apakah anda yakin menghapus " + address);
+    if (ask) {
+        input = 'id=' + id;
+        request =  ajax(request);
+        request.onreadystatechange = function() {
+            if (request.status == 200 && request.readyState == 4) {
+                console.log(request.responseText);
+                
+                if (request.responseText == 1) {
+                    window.location = "kontak.php";
+                }
+                else{
+                    alert("Failed to delete");
+                }
+            }
+        }
+        request.open("POST", "contactDelete.php", true);
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.send(input);
+    }
+}
