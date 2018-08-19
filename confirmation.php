@@ -7,16 +7,6 @@
 <head>
 <?php include 'head.php'; ?>
 </head>
-<script>
-	function menuProfilIn(){
-		document.getElementById('menuProfil').classList.add('in');
-		document.getElementById('menuProfil').classList.remove('out');
-	}
-	function menuProfilOut(){
-		document.getElementById('menuProfil').classList.remove('in');
-		document.getElementById('menuProfil').classList.add('out');
-	}
-</script>
 <body>
 
 <?php

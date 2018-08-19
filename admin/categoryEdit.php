@@ -15,7 +15,7 @@
         }
     }
     else{
-        header("Location: category.php");
+        //header("Location: category.php");
     }
     $stmt->close();
     $mysqli->close();
