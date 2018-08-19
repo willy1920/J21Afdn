@@ -17,6 +17,7 @@
 	<script src="js/ajax.js"></script>
 	<script src="js/login.js"></script>
     <script src="js/user.js"></script>
+<?php include 'head.php'; ?>
 </head>
 <script>
 	function menuProfilIn(){

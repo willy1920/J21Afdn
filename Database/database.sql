@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 18, 2018 at 11:58 AM
+-- Generation Time: Aug 19, 2018 at 08:42 AM
 -- Server version: 10.3.8-MariaDB-log
 -- PHP Version: 7.2.8
 
@@ -30,18 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `account` (
   `idEmail` varchar(50) NOT NULL,
-  `picture` varchar(100) NOT NULL,
+  `picture` varchar(500) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `phoneNumber` char(12) DEFAULT NULL,
-  `email` char(40) DEFAULT NULL
+  `phoneNumber` char(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`idEmail`, `picture`, `status`, `phoneNumber`, `email`) VALUES
-('willychai04@gmail.com', 'jefiwjife', 0, NULL, NULL);
+INSERT INTO `account` (`idEmail`, `picture`, `status`, `phoneNumber`) VALUES
+('willychai04@gmail.com', 'jefiwjife', 0, NULL);
 
 -- --------------------------------------------------------
 

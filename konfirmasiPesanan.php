@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../style/css.css">
 	<script src="../js/ajax.js"></script>
 	<script src="../js/login.js"></script>
+<?php include 'head.php'; ?>
 </head>
 <script>
 	function menuProfilIn(){
