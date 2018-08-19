@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Toko Baju 1 - Admin</title>
+	<title>Zahra House - Admin</title>
 	<meta name="google-signin-scope" content="profile email"> 
     <meta name="google-signin-client_id" content="571963356124-9nhkogpvo06cmqjnav3qh8cv3848n6na.apps.googleusercontent.com"> 
     <script src="https://apis.google.com/js/platform.js" async defer></script>

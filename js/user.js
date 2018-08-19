@@ -29,8 +29,13 @@ function submitTrolli() {
     request.send(input);
 }
 
+<<<<<<< HEAD
 function getProvince(form, callback) {
     let request, input;
+=======
+function getProvince() {
+    let request;
+>>>>>>> 53b9daed9f36cace2e29e9c48cf9799311f5dd1f
     request =  ajax(request);
     request.onreadystatechange = function() {
         if (request.status == 200 && request.readyState == 4) {
