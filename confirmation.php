@@ -72,8 +72,8 @@
 			if ($stmt->execute()) {
 				$stmt->bind_result($sqlStatus, $sqlIdConfirmation, $sqlBank, $sqlNumberAccount, $sqlAccountOwner);
 				?>
-				<table>
-				<tr>
+				<table class="w3-table w3-striped">
+				<tr class="w3-blue">
 					<th>Bank</th>
 					<th>No. Rek</th>
 					<th>Nama Pemilik</th>
@@ -107,7 +107,6 @@
 	}
 	else{
 ?>
-<center>
 	<form action="addConfirmation.php" method="post" enctype="multipart/form-data">
 		<p><?php echo "Id Nota : ".$banyakNota[0]; ?></p>
 		<input type="hidden" name="idNota" value="<?php echo $banyakNota[0]; ?>">
