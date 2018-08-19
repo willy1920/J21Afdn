@@ -3,9 +3,8 @@
     class RajaOngkir{
         public function getProvince(){
             $curl = curl_init();
-
-            curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api.rajaongkir.com/starter/province?id=",
+            $options = array(
+                CURLOPT_URL => "https://api.rajaongkir.com/starter/province?id=",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -15,7 +14,8 @@
             CURLOPT_HTTPHEADER => array(
                 "key: a32a5cbcd4f97f2043112c8ea141bc43"
                 ),
-            ));
+            );
+            curl_setopt_array($curl, $options);
 
             $response = curl_exec($curl);
             $err = curl_error($curl);
